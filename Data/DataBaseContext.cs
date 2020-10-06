@@ -19,24 +19,10 @@ namespace HorizonHotelWebsite.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<UserRole> UserRoles { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
 
-        //public DataBaseContext()
-        //{
-
-        //}
-
-        //public DbSet<Room> Rooms { get; set; }
-        //public DbSet<Booking> Bookings { get; set; }
-        //public DbSet<User> Users { get; set; }
-        //public DbSet<Role> Roles { get; set; }
-        //public DbSet<UserRole> UserRoles { get; set; }
-
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer("Data source=. ; Initial Catalog=MyHotelWebsite ; integrated security=true");
-        //}
-
+       
 
     }
 }

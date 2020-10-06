@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HorizonHotelWebsite.Services.GetUsers
+namespace HorizonHotelWebsite.Models.Services.GetUser
 {
-    public class GetUsersDto
+    public class GetUserView
     {
         public long Id { get; set; }
         public string FullName { get; set; }
