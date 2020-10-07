@@ -11,7 +11,7 @@ using Microsoft.Extensions.Hosting;
 using HorizonHotelWebsite.Data;
 using Microsoft.EntityFrameworkCore;
 using HorizonHotelWebsite.Services.Interfaces;
-using HorizonHotelWebsite.Services.GetUsers;
+using HorizonHotelWebsite.Models.Services.GetUser;
 
 
 
@@ -33,9 +33,8 @@ namespace HorizonHotelWebsite
 
             services.AddScoped<IDataBaseContext, DataBaseContext>();
 
-            services.AddScoped<IGetUsersService, GetUsersService>();
-            //string connectionString = "Data source=. ; Initial Catalog=MyHotelWebsite; Integrated Security=true";
-            //services.AddEntityFrameworkSqlServer().AddDbContext<DataBaseContext>(option => option.UseSqlServer(connectionString));
+            services.AddScoped<IGetUserService, GetUserService>();
+           
 
             services.AddDbContext<DataBaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataBaseContext")));
@@ -76,13 +75,6 @@ namespace HorizonHotelWebsite
             });
 
 
-            //app.UseMvc(routes =>
-            //{
-            //    routes.MapRoute(
-            //      name: "areas",
-            //      template: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-            //    );
-            //});
         }
     }
 }
