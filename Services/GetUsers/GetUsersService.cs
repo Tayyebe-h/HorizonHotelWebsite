@@ -20,13 +20,15 @@ namespace HorizonHotelWebsite.Services.GetUsers
             var users = _context.Users.AsQueryable();
             if (!string.IsNullOrWhiteSpace(request.SearchKey))
             {
-                users = users.Where(p => p.FullName.Contains(request.SearchKey) && p.Email.Contains(request.SearchKey));
+                users = users.Where(p => p.FirstName.Contains(request.SearchKey) && p.LastName.Contains(request.SearchKey) && p.Email.Contains(request.SearchKey) && p.Phone.Contains(request.SearchKey));
             }
            
             var usersList = users.Select(p => new GetUsersDto
             {
                 Email = p.Email,
-                FullName = p.FullName,
+                Phone =p.Phone,
+                FirstName =p.FirstName,
+                LastName = p.LastName,
                 Id = p.Id,
             }).ToList();
 

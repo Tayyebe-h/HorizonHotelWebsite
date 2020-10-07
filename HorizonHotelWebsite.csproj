@@ -12,6 +12,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Test\" />
     <Folder Include="wwwroot\AdminTemplate\app-assets\vendors\css\tables\" />
   </ItemGroup>
