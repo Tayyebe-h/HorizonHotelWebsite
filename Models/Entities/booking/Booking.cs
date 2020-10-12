@@ -1,5 +1,6 @@
 ﻿using HorizonHotelWebsite.Models.Entities.room;
 using HorizonHotelWebsite.Models.Entities.user;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,9 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         [Required]
         [DataType(DataType.Date)]
         public DateTime CheckOut { get; set; }
+        [BindNever]
+        [ScaffoldColumn(false)]
+        public DateTime BookingPlaced { get; set; }
 
     }
 }

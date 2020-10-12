@@ -1,0 +1,96 @@
+﻿
+
+@model HorizonHotelWebsite.Models.Entities.booking.Booking;
+@{
+    ViewData["Title"] = "Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Index" method="post" class="form-horizontal" role="form">
+    <h3>Adding a booking</h3>
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+    <div class="form-group">
+        <label asp-for="User.FirstName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="User.FirstName" class="form-control" />
+            <span asp-validation-for="User.FirstName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User.LastName" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="User.LastName" class="form-control" />
+            <span asp-validation-for="User.LastName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User.Email" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="User.Email" class="form-control" />
+            <span asp-validation-for="User.Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User.Phone" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="User.Phone" class="form-control" />
+            <span asp-validation-for="User.Phone" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="User.Role" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="User.Role" class="form-control" />
+            <span asp-validation-for="User.Role" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Room.RoomId" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Room.RoomId" class="form-control" />
+            <span asp-validation-for="Room.RoomId" class="text-danger"></span>
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        <label asp-for="Room.RoomNumber" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="Room.RoomNumber" class="form-control" />
+            <span asp-validation-for="Room.RoomNumber" class="text-danger"></span>
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        <label asp-for="CheckIn" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="CheckIn" class="form-control" />
+            <span asp-validation-for="CheckIn" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CheckOut" class="col-md-2 control-label"></label>
+        <div class="col-md-5">
+            <input asp-for="CheckOut" class="form-control" />
+            <span asp-validation-for="CheckOut" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            <input type="submit" class="btn btn-primary" value="Submit" />
+        </div>
+    </div>
+
+</form>
+
+
+

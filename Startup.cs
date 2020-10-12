@@ -12,8 +12,7 @@ using HorizonHotelWebsite.Data;
 using Microsoft.EntityFrameworkCore;
 using HorizonHotelWebsite.Services.Interfaces;
 using HorizonHotelWebsite.Models.Services.GetUser;
-
-
+using HorizonHotelWebsite.Models.Repositories;
 
 namespace HorizonHotelWebsite
 {
@@ -34,7 +33,8 @@ namespace HorizonHotelWebsite
             services.AddScoped<IDataBaseContext, DataBaseContext>();
 
             services.AddScoped<IGetUserService, GetUserService>();
-           
+            services.AddScoped<IBookingRepository, BookingRepository>();
+
 
             services.AddDbContext<DataBaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataBaseContext")));

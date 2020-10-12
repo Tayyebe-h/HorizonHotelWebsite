@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.local",
+      "connectionId": "HorizonHotelWebsiteContext"
+    },
+    "mssql2": {
+      "type": "mssql.local",
+      "connectionId": "DataBaseContext"
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 namespace HorizonHotelWebsite.Migrations
 {
-    public partial class init2 : Migration
+    public partial class ChangeinUSer1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

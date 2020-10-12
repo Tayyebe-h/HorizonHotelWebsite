@@ -17,8 +17,7 @@ namespace HorizonHotelWebsite.Data
 
         }
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
+    
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 

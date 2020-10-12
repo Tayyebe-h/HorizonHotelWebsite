@@ -59,7 +59,7 @@
                             <a href="#"><i class="icon-users"></i><span data-i18n="" class="menu-title">Users' management</span></a>
                             <ul class="menu-content">
                                 <li class="active">
-                                    <a href="~/admin/users/index" class="menu-item">Users' list</a>
+                                    <a href="~/admin/users/index" class="menu-item">Users list</a>
                                 </li>
                                 <li>
                                     <a href="~/admin/users/Create" class="menu-item">Adding new user *</a>
@@ -77,17 +77,17 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-faded">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" data-toggle="collapse" class="navbar-toggle d-lg-none float-right"><span class="sr-only">تغییر ناوبری </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><span class="d-lg-none navbar-right navbar-collapse-toggle"><a class="open-navbar-container"><i class="ft-more-vertical"></i></a></span><a id="navbar-fullscreen" href="javascript:;" class="ml-2 display-inline-block apptogglefullscreen">
+                    <button type="button" data-toggle="collapse" class="navbar-toggle d-lg-none float-right"><span class="sr-only">changing view </span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><span class="d-lg-none navbar-right navbar-collapse-toggle"><a class="open-navbar-container"><i class="ft-more-vertical"></i></a></span><a id="navbar-fullscreen" href="javascript:;" class="ml-2 display-inline-block apptogglefullscreen">
                         <i class="ft-maximize blue-grey darken-4 toggleClass"></i>
                         <p class="d-none">Full Screen</p>
                     </a><a class="mr-2 display-inline-block">
                         <i class="ft-shopping-cart blue-grey darken-4"></i>
-                        <p class="d-none">سبد خرید</p>
+                        @*<p class="d-none">Booking</p>*@
                     </a>
                     <div class="dropdown mr-2 display-inline-block">
-                        <a id="apps" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-edit blue-grey darken-4"></i><span class="mx-1 blue-grey darken-4 text-bold-400">برنامه ها</span></a>
+                        <a id="apps" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-edit blue-grey darken-4"></i><span class="mx-1 blue-grey darken-4 text-bold-400">Schedule</span></a>
                         <div class="apps dropdown-menu">
-                            <div class="arrow_box"><a href="chat.html" class="dropdown-item py-1"><span>چت</span></a><a href="taskboard.html" class="dropdown-item py-1"><span>وظیفه</span></a><a href="calendar.html" class="dropdown-item py-1"><span>تقویم</span></a></div>
+                            <div class="arrow_box"><a href="chat.html" class="dropdown-item py-1"><span>chat</span></a><a href="taskboard.html" class="dropdown-item py-1"><span>Task</span></a><a href="calendar.html" class="dropdown-item py-1"><span>calender</span></a></div>
                         </div>
                     </div>
                 </div>
@@ -110,13 +110,13 @@
                             <li class="dropdown nav-item mt-1">
                                 <a id="dropdownBasic" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle"><i class="ft-flag blue-grey darken-4"></i><span class="selected-language d-none"></span></a>
                                 <div class="dropdown-menu dropdown-menu-left">
-                                    <div class="arrow_box_right"><a href="javascript:;" class="dropdown-item py-1"><img src="~/AdminTemplate/app-assets/img/flags/us.png" alt="English Flag" class="langimg" /><span> انگلیس</span></a><a href="javascript:;" class="dropdown-item py-1"><img src="~/AdminTemplate/app-assets/img/flags/es.png" alt="Spanish Flag" class="langimg" /><span> اسپانیا</span></a><a href="javascript:;" class="dropdown-item py-1"><img src="~/AdminTemplate/app-assets/img/flags/br.png" alt="Portuguese Flag" class="langimg" /><span> پرتغال</span></a><a href="javascript:;" class="dropdown-item"><img src="~/AdminTemplate/app-assets/img/flags/de.png" alt="French Flag" class="langimg" /><span> فرانسه</span></a></div>
+                                    @*<div class="arrow_box_right"><a href="javascript:;" class="dropdown-item py-1"><img src="~/AdminTemplate/app-assets/img/flags/us.png" alt="English Flag" class="langimg" /><span> انگلیس</span></a><a href="javascript:;" class="dropdown-item py-1"><img src="~/AdminTemplate/app-assets/img/flags/es.png" alt="Spanish Flag" class="langimg" /><span> اسپانیا</span></a><a href="javascript:;" class="dropdown-item py-1"><img src="~/AdminTemplate/app-assets/img/flags/br.png" alt="Portuguese Flag" class="langimg" /><span> پرتغال</span></a><a href="javascript:;" class="dropdown-item"><img src="~/AdminTemplate/app-assets/img/flags/de.png" alt="French Flag" class="langimg" /><span> فرانسه</span></a></div>*@
                                 </div>
                             </li>
                             <li class="dropdown nav-item mt-1">
                                 <a id="dropdownBasic2" href="#" data-toggle="dropdown" class="nav-link position-relative dropdown-toggle">
                                     <i class="ft-bell blue-grey darken-4"></i><span class="notification badge badge-pill badge-danger">4</span>
-                                    <p class="d-none">اطلاعیه</p>
+                                    <p class="d-none">Notification</p>
                                 </a>
                                 <div class="notification-dropdown dropdown-menu dropdown-menu-left">
                                     <div class="arrow_box_right">
@@ -154,7 +154,7 @@
             </div>
 
             <footer class="footer footer-static footer-light">
-                <p class="clearfix text-muted text-center px-2"><span> &copy; 2018  کپی رایت <a href="https://fkazemi5236@gmail.com" id="pixinventLink" target="_blank" class="text-bold-800 primary darken-2"> fkazemi5236 </a>,همه حقوق محفوظ است </span></p>
+                <p class="clearfix text-muted text-center px-2"><span> &copy;copy right 2020 <a href="https://fkazemi5236@gmail.com" id="pixinventLink" target="_blank" class="text-bold-800 primary darken-2"> fkazemi5236 </a>,همه حقوق محفوظ است </span></p>
             </footer>
 
         </div>
@@ -167,13 +167,13 @@
             <div class="row">
                 <div class="col-12 mt-1">
                     <ul class="nav nav-tabs">
-                        <li class="nav-item"><a id="base-tab1" data-toggle="tab" aria-controls="base-tab1" href="#activity-tab" aria-expanded="true" class="nav-link active"><strong>فعالیت</strong></a></li>
-                        <li class="nav-item"><a id="base-tab2" data-toggle="tab" aria-controls="base-tab2" href="#settings-tab" aria-expanded="false" class="nav-link"><strong>تنظیمات</strong></a></li>
+                        <li class="nav-item"><a id="base-tab1" data-toggle="tab" aria-controls="base-tab1" href="#activity-tab" aria-expanded="true" class="nav-link active"><strong>Activity</strong></a></li>
+                        <li class="nav-item"><a id="base-tab2" data-toggle="tab" aria-controls="base-tab2" href="#settings-tab" aria-expanded="false" class="nav-link"><strong>Settings</strong></a></li>
                     </ul>
                     <div class="tab-content">
                         <div id="activity-tab" role="tabpanel" aria-expanded="true" aria-labelledby="base-tab1" class="tab-pane active">
                             <div id="activity-timeline" class="col-12 timeline-left">
-                                <h6 class="mt-1 mb-3 text-bold-400">فعالیت اخیر</h6>
+                                <h6 class="mt-1 mb-3 text-bold-400">Recent activity</h6>
                                 <div class="timeline">
                                     <ul class="list-unstyled base-timeline activity-timeline ml-0">
                                         <li>
