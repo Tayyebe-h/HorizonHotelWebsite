@@ -17,7 +17,7 @@ namespace HorizonHotelWebsite.Models.Entities.user
 
     public class User
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
         
 
         [Required(ErrorMessage = "Please enter your first name")]
