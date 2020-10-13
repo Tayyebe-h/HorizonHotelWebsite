@@ -24,8 +24,11 @@ namespace HorizonHotelWebsite.Models.Services.GetUser
             var usersList = users.Select(p => new GetUserView
             {
                 Email = p.Email,
-                FullName = p.FullName,
+                FirstName = p.FirstName,
+                LastName = p.LastName,
                 Id = p.Id,
+                Role = p.Role,
+                Phone = p.Phone,
             }).ToList();
 
             return new ResultGetUser

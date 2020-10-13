@@ -5,14 +5,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using HorizonHotelWebsite.Models.Entities.room;
+using HorizonHotelWebsite.Models.Entities.booking;
 
 namespace HorizonHotelWebsite.Services.Interfaces
 {
     public interface IDataBaseContext
     {
         DbSet<User> Users { get; set; }
-        DbSet<Role> Roles { get; set; }
-        DbSet<UserRole> UserRoles { get; set; }
+        DbSet<Room> Rooms { get; set; }
+        DbSet<Booking> Bookings { get; set; }
+
 
 
 

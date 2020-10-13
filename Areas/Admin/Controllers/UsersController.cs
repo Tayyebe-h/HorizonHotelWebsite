@@ -8,6 +8,7 @@ using HorizonHotelWebsite.Models.Services.GetUser;
 
 namespace HorizonHotelWebsite.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class UsersController : Controller
     {
         private readonly IGetUserService _getUserService;
@@ -16,7 +17,7 @@ namespace HorizonHotelWebsite.Areas.Admin.Controllers
             _getUserService = getUserService;
             
         }
-        [Area("Admin")]
+        
         public IActionResult Index()
         {
             
