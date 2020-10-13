@@ -33,7 +33,7 @@ namespace HorizonHotelWebsite
             services.AddScoped<IDataBaseContext, DataBaseContext>();
 
             services.AddScoped<IGetUserService, GetUserService>();
-            services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IAdminBookingRepository, AdminBookingRepository>();
 
 
             services.AddDbContext<DataBaseContext>(options =>
