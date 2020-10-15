@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HorizonHotelWebsite.Models.Entities.room;
+using HorizonHotelWebsite.Models.Repositories;
+using HorizonHotelWebsite.ViewsModels.RoomsViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +12,18 @@ namespace HorizonHotelWebsite.Controllers
 {
     public class AdminRoomsController : Controller
     {
+        private readonly IAdminRoomRepo _adminRoomRepo;
+        public AdminRoomsController(IAdminRoomRepo adminRoomRepo)
+        {
+            _adminRoomRepo = adminRoomRepo;
+        }
         // GET: AdminRoomsController
         public ActionResult Index()
         {
-            return View();
+            AdminRoomViewModel adminRoomViewModel = new AdminRoomViewModel();
+            adminRoomViewModel.Rooms = _adminRoomRepo.AllRooms;
+            return View(adminRoomViewModel);
+
         }
 
         // GET: AdminRoomsController/Details/5
@@ -30,16 +41,16 @@ namespace HorizonHotelWebsite.Controllers
         // POST: AdminRoomsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create([Bind("RoomId, RoomNumber, Type, Price")]
+            Room room)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                _adminRoomRepo.CreateRoom(room);
+                _adminRoomRepo.SaveChanges(room.RoomId);
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(room);
         }
 
         // GET: AdminRoomsController/Edit/5
@@ -66,22 +77,30 @@ namespace HorizonHotelWebsite.Controllers
         // GET: AdminRoomsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+
+            AdminRoomViewModel model = new AdminRoomViewModel();
+            model.Rooms = _adminRoomRepo.AllRooms;
+            var room = model.Rooms.FirstOrDefault(r => r.RoomId == id);
+            return View(room);
         }
 
         // POST: AdminRoomsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, [Bind("RoomId, RoomNumber, Type, Price")] Room room)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            //_adminRoomRepo.AllRooms(id);
+            _adminRoomRepo.DeleteRoom(id);
+            _adminRoomRepo.SaveChanges(id);
+            return RedirectToAction(nameof(Index));
         }
+
+        //public async Task<IActionResult> DeleteConfirmed(int id, [Bind("RoomId, RoomNumber, Type, Price")] Room room)
+        //{
+        //    var movie = await _adminRoomRepo.AllRooms(id);
+        //    _adminRoomRepo.DeleteRoom(movie);
+        //    await _adminRoomRepo.SaveChanges(room);
+        //    return RedirectToAction(nameof(Index));
+        //}
     }
 }

@@ -5,16 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201004104415_addingPassword.cs" />
-    <Compile Remove="Migrations\20201004104415_addingPassword.Designer.cs" />
+    <Compile Remove="Test\**" />
+    <Compile Remove="Views\Rooms\**" />
+    <Content Remove="Test\**" />
+    <Content Remove="Views\Rooms\**" />
+    <EmbeddedResource Remove="Test\**" />
+    <EmbeddedResource Remove="Views\Rooms\**" />
+    <None Remove="Test\**" />
+    <None Remove="Views\Rooms\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Migrations\" />
-    <Folder Include="Test\" />
-    <Folder Include="Views\Rooms\" />
+    <Compile Remove="Migrations\20201004104415_addingPassword.cs" />
+    <Compile Remove="Migrations\20201004104415_addingPassword.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
