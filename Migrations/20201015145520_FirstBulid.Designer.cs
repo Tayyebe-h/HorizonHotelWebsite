@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HorizonHotelWebsite.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20201014084152_AddRoo")]
-    partial class AddRoo
+    [Migration("20201015145520_FirstBulid")]
+    partial class FirstBulid
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
