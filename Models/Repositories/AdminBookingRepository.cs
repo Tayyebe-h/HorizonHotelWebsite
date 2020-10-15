@@ -25,7 +25,7 @@ namespace HorizonHotelWebsite.Models.Repositories
             if (has)
             {
                 booking.BookingPlaced = DateTime.Now;
-                User user = new User()
+                 User user = new User()
                 {
                     FirstName = booking.User.FirstName,
                     LastName = booking.User.LastName,
