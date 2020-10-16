@@ -29,7 +29,10 @@ namespace HorizonHotelWebsite.Controllers
         // GET: AdminRoomsController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            AdminRoomViewModel model = new AdminRoomViewModel();
+            model.Rooms = _adminRoomRepo.AllRooms;
+            var room = model.Rooms.FirstOrDefault(r => r.RoomId == id);
+            return View(room);
         }
 
         // GET: AdminRoomsController/Create
@@ -69,6 +72,7 @@ namespace HorizonHotelWebsite.Controllers
             if (ModelState.IsValid)
             {
                 //_adminRoomRepo.CreateRoom(room);
+                _adminRoomRepo.CreateRoom(room);
                 _adminRoomRepo.SaveChanges(room.RoomId);
                 return RedirectToAction("Index");
             }
@@ -95,13 +99,5 @@ namespace HorizonHotelWebsite.Controllers
             _adminRoomRepo.SaveChanges(id);
             return RedirectToAction(nameof(Index));
         }
-
-        //public async Task<IActionResult> DeleteConfirmed(int id, [Bind("RoomId, RoomNumber, Type, Price")] Room room)
-        //{
-        //    var movie = await _adminRoomRepo.AllRooms(id);
-        //    _adminRoomRepo.DeleteRoom(movie);
-        //    await _adminRoomRepo.SaveChanges(room);
-        //    return RedirectToAction(nameof(Index));
-        //}
     }
 }
