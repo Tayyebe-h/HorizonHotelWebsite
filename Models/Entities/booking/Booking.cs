@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using HorizonHotelWebsite.Models.Services.Attributes;
 
 namespace HorizonHotelWebsite.Models.Entities.booking
 {
@@ -21,6 +22,7 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         [DataType(DataType.Date)]
         public DateTime CheckIn { get; set; }
         [Required]
+        [BookingDateCheck]
         [DataType(DataType.Date)]
         public DateTime CheckOut { get; set; }
         [BindNever]
