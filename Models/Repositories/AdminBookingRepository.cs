@@ -18,10 +18,11 @@ namespace HorizonHotelWebsite.Models.Repositories
         {
             _dataBaseContext = dataBaseContext;
         }
+
         public void CreateBooking(Booking booking)
         {
             bool has = _dataBaseContext.Rooms.Any(R => R.RoomId == booking.Room.RoomId);
-         
+
             if (has)
             {
                 booking.BookingPlaced = DateTime.Now;
@@ -32,29 +33,18 @@ namespace HorizonHotelWebsite.Models.Repositories
                     Phone = booking.User.Phone,
                     Email = booking.User.Email,
                     Role = booking.User.Role,
-
                 };
 
-
-                //_dataBaseContext.Users.Add(user);
-                Room room = new Room()
-                {
-                    RoomId = booking.Room.RoomId,
-                    //RoomNumber = _dataBaseContext.Rooms.Where(x => x.RoomId == booking.Room.RoomId).Select(a => a.RoomNumber.ToString())
-                };
+                booking.Room = _dataBaseContext.Rooms.FirstOrDefault(R => R.RoomId == booking.Room.RoomId);
+                    
                 _dataBaseContext.Bookings.Add(booking);
-
-                //_dataBaseContext.Rooms.(booking.Room);
-
+                _dataBaseContext.Rooms.Update(booking.Room);
                 _dataBaseContext.SaveChanges();
-
-
-            }else{
+            }
+            else
+            {
                 throw new Exception("This room doesn't exist.");
-            };
-           
-            
-
+            }
         }
     }
 }

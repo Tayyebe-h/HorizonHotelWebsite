@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HorizonHotelWebsite.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20201014084152_AddRoo")]
-    partial class AddRoo
+    [Migration("20201016073403_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -75,10 +75,13 @@ namespace HorizonHotelWebsite.Migrations
 
             modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.user.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AdminUserViewModelUserId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -104,9 +107,38 @@ namespace HorizonHotelWebsite.Migrations
                     b.Property<int>("Role")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
+
+                    b.HasIndex("AdminUserViewModelUserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("HorizonHotelWebsite.ViewsModels.AdminUserViewModel", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("AdminUserViewModel");
                 });
 
             modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.booking.Booking", b =>
@@ -122,6 +154,13 @@ namespace HorizonHotelWebsite.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.user.User", b =>
+                {
+                    b.HasOne("HorizonHotelWebsite.ViewsModels.AdminUserViewModel", null)
+                        .WithMany("Users")
+                        .HasForeignKey("AdminUserViewModelUserId");
                 });
 #pragma warning restore 612, 618
         }

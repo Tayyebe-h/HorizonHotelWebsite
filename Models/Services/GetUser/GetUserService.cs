@@ -26,7 +26,7 @@ namespace HorizonHotelWebsite.Models.Services.GetUser
                 Email = p.Email,
                 FirstName = p.FirstName,
                 LastName = p.LastName,
-                Id = p.Id,
+                Id = p.UserId,
                 Role = p.Role,
                 Phone = p.Phone,
             }).ToList();

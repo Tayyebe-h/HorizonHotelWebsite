@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HorizonHotelWebsite.ViewsModels;
 
 namespace HorizonHotelWebsite.Data
 {
@@ -20,6 +21,7 @@ namespace HorizonHotelWebsite.Data
     
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<HorizonHotelWebsite.ViewsModels.AdminUserViewModel> AdminUserViewModel { get; set; }
 
        
 

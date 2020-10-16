@@ -35,6 +35,8 @@ namespace HorizonHotelWebsite
             services.AddScoped<IGetUserService, GetUserService>();
             services.AddScoped<IAdminBookingRepository, AdminBookingRepository>();
             services.AddScoped<IAdminRoomRepo, AdminRoomRepo>();
+            services.AddScoped<IAdminUserRepository, AdminUserRepository>();
+
 
 
 

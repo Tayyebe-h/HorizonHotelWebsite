@@ -16,6 +16,11 @@ namespace HorizonHotelWebsite.Models.Repositories
             _dataBaseContext = dataBaseContext;
         }
 
+        public Room GetById(int Id)
+        {
+            return _dataBaseContext.Rooms.FirstOrDefault(r => r.RoomId == Id);
+        }
+
         public IEnumerable<Room> AllRooms
         {
             get
@@ -47,10 +52,7 @@ namespace HorizonHotelWebsite.Models.Repositories
             return room;
         }
 
-        public Room GetById(int Id)
-        {
-            return _dataBaseContext.Rooms.FirstOrDefault(r => r.RoomId == Id);
-        }
+        
 
         public Room SaveChanges(int id)
         {

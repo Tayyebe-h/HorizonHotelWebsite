@@ -3,10 +3,27 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HorizonHotelWebsite.Migrations
 {
-    public partial class AddRoo : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AdminUserViewModel",
+                columns: table => new
+                {
+                    UserId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    Phone = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: true),
+                    Role = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AdminUserViewModel", x => x.UserId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Rooms",
                 columns: table => new
@@ -26,18 +43,25 @@ namespace HorizonHotelWebsite.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
+                    UserId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     Phone = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Password = table.Column<string>(nullable: true),
-                    Role = table.Column<int>(nullable: false)
+                    Role = table.Column<int>(nullable: false),
+                    AdminUserViewModelUserId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.Id);
+                    table.PrimaryKey("PK_Users", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_Users_AdminUserViewModel_AdminUserViewModelUserId",
+                        column: x => x.AdminUserViewModelUserId,
+                        principalTable: "AdminUserViewModel",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -65,7 +89,7 @@ namespace HorizonHotelWebsite.Migrations
                         name: "FK_Bookings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
+                        principalColumn: "UserId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -78,6 +102,11 @@ namespace HorizonHotelWebsite.Migrations
                 name: "IX_Bookings_UserId",
                 table: "Bookings",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_AdminUserViewModelUserId",
+                table: "Users",
+                column: "AdminUserViewModelUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -90,6 +119,9 @@ namespace HorizonHotelWebsite.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "AdminUserViewModel");
         }
     }
 }
