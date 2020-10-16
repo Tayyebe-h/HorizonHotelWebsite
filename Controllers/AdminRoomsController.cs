@@ -17,6 +17,7 @@ namespace HorizonHotelWebsite.Controllers
         {
             _adminRoomRepo = adminRoomRepo;
         }
+
         // GET: AdminRoomsController
         public ActionResult Index()
         {
@@ -72,7 +73,6 @@ namespace HorizonHotelWebsite.Controllers
             if (ModelState.IsValid)
             {
                 //_adminRoomRepo.CreateRoom(room);
-                _adminRoomRepo.CreateRoom(room);
                 _adminRoomRepo.SaveChanges(room.RoomId);
                 return RedirectToAction("Index");
             }
