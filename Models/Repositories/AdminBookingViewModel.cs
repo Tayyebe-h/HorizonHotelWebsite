@@ -8,15 +8,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HorizonHotelWebsite.Models.Entities.booking
+namespace HorizonHotelWebsite.Models.Repositories
 {
-    public class Booking
+    public class AdminBookingViewModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         [Required]
         public User User { get; set; }
         [Required]
-        public Room Room { get; set; }
+        //[RoomIdValidation]
+        public long RoomId{ get; set; }
         [Required]
         [DataType(DataType.Date)]
         public DateTime CheckIn { get; set; }
@@ -24,7 +25,6 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         [DataType(DataType.Date)]
         public DateTime CheckOut { get; set; }
         [BindNever]
-        [ScaffoldColumn(false)]
         public DateTime BookingPlaced { get; set; }
 
     }

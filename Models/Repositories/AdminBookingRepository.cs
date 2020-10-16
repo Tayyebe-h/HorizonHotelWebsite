@@ -25,7 +25,7 @@ namespace HorizonHotelWebsite.Models.Repositories
             if (has)
             {
                 booking.BookingPlaced = DateTime.Now;
-                 User user = new User()
+                User user = new User()
                 {
                     FirstName = booking.User.FirstName,
                     LastName = booking.User.LastName,
@@ -34,17 +34,20 @@ namespace HorizonHotelWebsite.Models.Repositories
                     Role = booking.User.Role,
 
                 };
-
-
-                //_dataBaseContext.Users.Add(user);
+                                                
                 Room room = new Room()
                 {
                     RoomId = booking.Room.RoomId,
-                    //RoomNumber = _dataBaseContext.Rooms.Where(x => x.RoomId == booking.Room.RoomId).Select(a => a.RoomNumber.ToString())
-                };
-                _dataBaseContext.Bookings.Add(booking);
+                    RoomNumber = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.RoomNumber).FirstOrDefault(),
+                    Price = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.Price).FirstOrDefault(),
+                    Type = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.Type).FirstOrDefault(),
+                    Bookings = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).SelectMany(R => R.Bookings).ToList(),
 
-                //_dataBaseContext.Rooms.(booking.Room);
+                };
+
+                                
+                _dataBaseContext.Bookings.Add(booking);
+                _dataBaseContext.Rooms.Update(booking.Room);
 
                 _dataBaseContext.SaveChanges();
 
