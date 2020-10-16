@@ -21,9 +21,9 @@ namespace HorizonHotelWebsite.Migrations
 
             modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.booking.Booking", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("BookingPlaced")
@@ -35,11 +35,11 @@ namespace HorizonHotelWebsite.Migrations
                     b.Property<DateTime>("CheckOut")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("RoomId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
 
-                    b.Property<long>("UserId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -52,13 +52,13 @@ namespace HorizonHotelWebsite.Migrations
 
             modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.room.Room", b =>
                 {
-                    b.Property<long>("RoomId")
+                    b.Property<int>("RoomId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("RoomNumber")
                         .HasColumnType("nvarchar(max)");
@@ -73,9 +73,9 @@ namespace HorizonHotelWebsite.Migrations
 
             modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.user.User", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
+                        .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Email")
