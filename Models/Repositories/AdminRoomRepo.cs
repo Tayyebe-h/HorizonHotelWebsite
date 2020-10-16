@@ -40,6 +40,7 @@ namespace HorizonHotelWebsite.Models.Repositories
             return room;
         }
 
+
         public Room DeleteRoom(int id)
         {
             var room = GetById(id);

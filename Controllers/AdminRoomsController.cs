@@ -17,6 +17,7 @@ namespace HorizonHotelWebsite.Controllers
         {
             _adminRoomRepo = adminRoomRepo;
         }
+
         // GET: AdminRoomsController
         public ActionResult Index()
         {
@@ -29,7 +30,10 @@ namespace HorizonHotelWebsite.Controllers
         // GET: AdminRoomsController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            AdminRoomViewModel model = new AdminRoomViewModel();
+            model.Rooms = _adminRoomRepo.AllRooms;
+            var room = model.Rooms.FirstOrDefault(r => r.RoomId == id);
+            return View(room);
         }
 
         // GET: AdminRoomsController/Create
@@ -41,8 +45,7 @@ namespace HorizonHotelWebsite.Controllers
         // POST: AdminRoomsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("RoomId, RoomNumber, Type, Price")]
-            Room room)
+        public ActionResult Create([Bind("RoomId, RoomNumber, Type, Price")] Room room)
         {
             if (ModelState.IsValid)
             {
@@ -56,22 +59,24 @@ namespace HorizonHotelWebsite.Controllers
         // GET: AdminRoomsController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            AdminRoomViewModel model = new AdminRoomViewModel();
+            model.Rooms = _adminRoomRepo.AllRooms;
+            var room = model.Rooms.FirstOrDefault(r => r.RoomId == id);
+            return View(room);
         }
 
         // POST: AdminRoomsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, [Bind("RoomId, RoomNumber, Type, Price")] Room room)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                //_adminRoomRepo.CreateRoom(room);
+                _adminRoomRepo.SaveChanges(room.RoomId);
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(room);
         }
 
         // GET: AdminRoomsController/Delete/5
@@ -94,13 +99,5 @@ namespace HorizonHotelWebsite.Controllers
             _adminRoomRepo.SaveChanges(id);
             return RedirectToAction(nameof(Index));
         }
-
-        //public async Task<IActionResult> DeleteConfirmed(int id, [Bind("RoomId, RoomNumber, Type, Price")] Room room)
-        //{
-        //    var movie = await _adminRoomRepo.AllRooms(id);
-        //    _adminRoomRepo.DeleteRoom(movie);
-        //    await _adminRoomRepo.SaveChanges(room);
-        //    return RedirectToAction(nameof(Index));
-        //}
     }
 }
