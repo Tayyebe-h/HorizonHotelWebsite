@@ -34,9 +34,18 @@ namespace HorizonHotelWebsite.Models.Repositories
                     Role = booking.User.Role,
 
                 };
+                                                
+                Room room = new Room()
+                {
+                    RoomId = booking.Room.RoomId,
+                    RoomNumber = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.RoomNumber).FirstOrDefault(),
+                    Price = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.Price).FirstOrDefault(),
+                    Type = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.Type).FirstOrDefault(),
+                    Bookings = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).SelectMany(R => R.Bookings).ToList(),
 
-                
-                //_dataBaseContext.Users.Add(user);
+                };
+
+                                
                 _dataBaseContext.Bookings.Add(booking);
                 _dataBaseContext.Rooms.Update(booking.Room);
 

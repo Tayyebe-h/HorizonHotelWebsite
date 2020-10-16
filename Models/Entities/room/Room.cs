@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using HorizonHotelWebsite.Models.Services;
 
 namespace HorizonHotelWebsite.Models.Entities.room
 {
@@ -24,7 +25,7 @@ namespace HorizonHotelWebsite.Models.Entities.room
         
         public string RoomNumber { get; set; }
         public RoomType Type { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public ICollection<Booking> Bookings { get; set; }
       
         
