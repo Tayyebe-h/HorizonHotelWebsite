@@ -21,6 +21,7 @@ namespace HorizonHotelWebsite.Models.Entities.room
     public class Room
     {
         [Display(Name = "Room Id")]
+        
         public int RoomId { get; set; }
         
         public string RoomNumber { get; set; }
