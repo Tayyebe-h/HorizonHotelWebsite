@@ -11,7 +11,6 @@ using Microsoft.Extensions.Hosting;
 using HorizonHotelWebsite.Data;
 using Microsoft.EntityFrameworkCore;
 using HorizonHotelWebsite.Services.Interfaces;
-using HorizonHotelWebsite.Models.Services.GetUser;
 using HorizonHotelWebsite.Models.Repositories;
 
 namespace HorizonHotelWebsite
@@ -32,7 +31,6 @@ namespace HorizonHotelWebsite
 
             services.AddScoped<IDataBaseContext, DataBaseContext>();
 
-            services.AddScoped<IGetUserService, GetUserService>();
             services.AddScoped<IAdminBookingRepository, AdminBookingRepository>();
             services.AddScoped<IAdminRoomRepo, AdminRoomRepo>();
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();
@@ -70,10 +68,6 @@ namespace HorizonHotelWebsite
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
 
             });
