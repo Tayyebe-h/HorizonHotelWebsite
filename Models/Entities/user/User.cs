@@ -19,12 +19,12 @@ namespace HorizonHotelWebsite.Models.Entities.user
     {
         public int UserId { get; set; }
 
-        [Required(ErrorMessage = "Please enter your first name")]
+        [Required(ErrorMessage = "Please enter the first name")]
         [Display(Name = "First name")]
         [StringLength(50)]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Please enter your last name")]
+        [Required(ErrorMessage = "Please enter the last name")]
         [Display(Name = "Last name")]
         [StringLength(50)]
         public string LastName { get; set; }

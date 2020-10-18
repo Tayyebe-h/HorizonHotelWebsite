@@ -17,6 +17,7 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         [Required]
         public User User { get; set; }
         [Required]
+        //[RoomIdValidation]
         public Room Room { get; set; }
         [Required]
         [DataType(DataType.Date)]

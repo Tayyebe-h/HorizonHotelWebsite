@@ -43,12 +43,23 @@
         </div>
     </div>
 
-    <div class="form-group">
+    @*<div class="form-group">
         <label asp-for="User.Role" class="col-md-2 control-label"></label>
         <div class="col-md-5">
             <input asp-for="User.Role" class="form-control" />
             <span asp-validation-for="User.Role" class="text-danger"></span>
         </div>
+    </div>*@
+
+
+    <div class="form-group">
+    <label asp-for="User.Role" class="col-md-2 control-label"></label>
+         <div class="col-md-5">
+              <select asp-for="User.Role" asp-items="Html.GetEnumSelectList<HorizonHotelWebsite.Models.Entities.user.RoleName>()" class="form-control">
+                <option value="">Choose user's role</option>
+              </select>
+           <span asp-validation-for="User.Role" class="text-danger"></span>
+         </div>
     </div>
 
     <div class="form-group">
@@ -59,13 +70,6 @@
         </div>
     </div>
 
-    @*<div class="form-group">
-        <label asp-for="Room.RoomNumber" class="col-md-2 control-label"></label>
-        <div class="col-md-5">
-            <input asp-for="Room.RoomNumber" class="form-control" />
-            <span asp-validation-for="Room.RoomNumber" class="text-danger"></span>
-        </div>
-    </div>*@
 
     <div class="form-group">
         <label asp-for="CheckIn" class="col-md-2 control-label"></label>
