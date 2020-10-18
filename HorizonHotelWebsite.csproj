@@ -5,12 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201004104415_addingPassword.cs" />
-    <Compile Remove="Migrations\20201004104415_addingPassword.Designer.cs" />
+    <Compile Remove="Views\Rooms\**" />
+    <Content Remove="Views\Rooms\**" />
+    <EmbeddedResource Remove="Views\Rooms\**" />
+    <None Remove="Views\Rooms\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Rooms\" />
+    <Compile Remove="Migrations\20201004104415_addingPassword.cs" />
+    <Compile Remove="Migrations\20201004104415_addingPassword.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
