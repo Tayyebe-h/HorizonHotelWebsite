@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HorizonHotelWebsite.Migrations
 {
-    public partial class Init : Migration
+    public partial class Neww : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
