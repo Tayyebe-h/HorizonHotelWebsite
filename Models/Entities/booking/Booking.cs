@@ -15,10 +15,12 @@ namespace HorizonHotelWebsite.Models.Entities.booking
     {
         public int Id { get; set; }
         [Required]
-        public User User { get; set; }
+        public virtual User User { get; set; }
+        public int UserId { get; set; }
         [Required]
-        //[RoomIdValidation]
-        public Room Room { get; set; }
+        //[RoomIdValidation()]
+        public virtual  Room Room { get; set; }
+        public int RoomId { get; set; }
         [Required]
         [DataType(DataType.Date)]
         public DateTime CheckIn { get; set; }

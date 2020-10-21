@@ -78,9 +78,6 @@ namespace HorizonHotelWebsite.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AdminUserViewModelUserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -107,36 +104,7 @@ namespace HorizonHotelWebsite.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("AdminUserViewModelUserId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("HorizonHotelWebsite.ViewsModels.AdminUserViewModel", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("AdminUserViewModel");
                 });
 
             modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.booking.Booking", b =>
@@ -152,13 +120,6 @@ namespace HorizonHotelWebsite.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.user.User", b =>
-                {
-                    b.HasOne("HorizonHotelWebsite.ViewsModels.AdminUserViewModel", null)
-                        .WithMany("Users")
-                        .HasForeignKey("AdminUserViewModelUserId");
                 });
 #pragma warning restore 612, 618
         }
