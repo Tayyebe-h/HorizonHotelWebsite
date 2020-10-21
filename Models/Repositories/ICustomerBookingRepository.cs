@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HorizonHotelWebsite.Models.Repositories
 {
-    interface ICustomerBookingRepository
+    public interface ICustomerBookingRepository
     {
         void CreateBooking(Booking booking);
     }

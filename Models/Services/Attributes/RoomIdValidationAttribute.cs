@@ -19,7 +19,7 @@ namespace HorizonHotelWebsite.Models.Services
         }
         
         public string GetErrorMessage() =>
-        $"This room doesn't exists.";
+        $"This room doesn't exist.";
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var booking = (Booking)validationContext.ObjectInstance;

@@ -21,7 +21,7 @@ namespace HorizonHotelWebsite.Data
     
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<HorizonHotelWebsite.ViewsModels.AdminUserViewModel> AdminUserViewModel { get; set; }
+        
 
        
 
