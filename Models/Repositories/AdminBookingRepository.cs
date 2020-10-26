@@ -34,7 +34,7 @@ namespace HorizonHotelWebsite.Models.Repositories
                     Email = booking.User.Email,
                     Role = booking.User.Role,
                 };
-
+                
                
                 booking.Room = new Room
                 {
@@ -45,6 +45,8 @@ namespace HorizonHotelWebsite.Models.Repositories
                     Bookings = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).SelectMany(R => R.Bookings).ToList(),
 
                 };
+
+                user.Bookings.Add(booking);
 
                 _dataBaseContext.Bookings.Add(booking);
                

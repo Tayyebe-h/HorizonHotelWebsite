@@ -7,6 +7,7 @@ using HorizonHotelWebsite.Models.Entities.user;
 using HorizonHotelWebsite.Models.Repositories;
 using HorizonHotelWebsite.ViewsModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HorizonHotelWebsite.Controllers
 {
@@ -34,7 +35,7 @@ namespace HorizonHotelWebsite.Controllers
             }
 
             var user = _adminUserRepository.GetById(id);
-
+            
             if (user == null)
             {
                 return NotFound();
@@ -53,34 +54,55 @@ namespace HorizonHotelWebsite.Controllers
         public ActionResult Create([Bind("UserId, FirstName, LastName, Phone, Email, Role")]
             User user)
         {
+            AdminUserViewModel adminUserViewModel = new AdminUserViewModel();
             if (ModelState.IsValid)
             {
                 _adminUserRepository.CreateUser(user);
-                _adminUserRepository.Update(user.UserId);
+                _adminUserRepository.UpdateWithUser(user);
+                return RedirectToAction("Index");
+            }
+
+            return View(adminUserViewModel);
+        }
+
+        public ActionResult Edit(int? id, IAdminUserRepository adminUserRepository)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var user = adminUserRepository.GetById(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return View(user);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, [Bind("UserId, FirstName, LastName, Phone, Email, Role")]
+            User user)
+        {
+            if (id != user.UserId)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _adminUserRepository.UpdateWithUser(user);
                 return RedirectToAction("Index");
             }
 
             return View(user);
         }
 
-        public ActionResult Edit(int id)
+        public ActionResult Delete(int? id)
         {
-            var user = _adminUserRepository.GetById(id);
-            return View(user);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, User user)
-        {
-            _adminUserRepository.Update(id);
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult Delete(int id)
-        {
-            AdminUserViewModel adminUserViewModel = new AdminUserViewModel();
-            adminUserViewModel.Users = _adminUserRepository.AllUsers;
             var user = _adminUserRepository.GetById(id);
             return View(user);
         }
@@ -90,8 +112,14 @@ namespace HorizonHotelWebsite.Controllers
         public ActionResult Delete(int id,
             User user)
         {
-            _adminUserRepository.DeleteUser(id);
+            _adminUserRepository.DeleteUser(user);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Bookings(int? id)
+        {
+            var user = _adminUserRepository.GetById(id);
+            return View(user);
         }
     }
 }

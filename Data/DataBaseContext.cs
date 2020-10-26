@@ -15,15 +15,21 @@ namespace HorizonHotelWebsite.Data
     {
         public DataBaseContext(DbContextOptions options) : base(options)
         {
-
         }
         public DbSet<User> Users { get; set; }
-    
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        public DbSet<HorizonHotelWebsite.ViewsModels.AdminUserViewModel> AdminUserViewModel { get; set; }
 
-       
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Booking>()
+                .Property<int>("UserForeignKey");
 
+            modelBuilder.Entity<Booking>()
+                .HasOne(b => b.User)
+                .WithMany(u => u.Bookings)
+                .HasForeignKey("UserForeignKey")
+                .IsRequired();
+        }
     }
 }

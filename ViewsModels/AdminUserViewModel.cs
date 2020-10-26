@@ -26,6 +26,6 @@ namespace HorizonHotelWebsite.ViewsModels
 
         public RoleName Role { get; set; }
 
-        //Could we have a link on the page to list of bookings?
+        
     }
 }
