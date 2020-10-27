@@ -8,15 +8,16 @@ namespace HorizonHotelWebsite.Models.Repositories
 {
     public interface IAdminRoomRepo
     {
-        //void CreateBooking(Room room);
         public IEnumerable<Room> AllRooms { get; }
 
-        Room GetById(int Id);
+        public Room GetById(int? id);
 
         public Room CreateRoom(Room room);
 
         public Room DeleteRoom(int id);
 
-        public Room SaveChanges(int id);
+        public Room Update(int id);
+
+        public Room UpdateWithRoom(Room room);
     }
 }
