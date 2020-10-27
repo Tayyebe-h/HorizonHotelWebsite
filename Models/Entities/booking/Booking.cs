@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using HorizonHotelWebsite.Models.Services.Attributes;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HorizonHotelWebsite.Models.Entities.booking
 {
@@ -18,7 +19,6 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         public virtual User User { get; set; }
         public int UserId { get; set; }
         [Required]
-        //[RoomIdValidation()]
         public virtual  Room Room { get; set; }
         public int RoomId { get; set; }
         [Required]
