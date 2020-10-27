@@ -2,6 +2,7 @@
 using HorizonHotelWebsite.Models.Entities.booking;
 using HorizonHotelWebsite.Models.Entities.room;
 using HorizonHotelWebsite.Models.Entities.user;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,29 +21,38 @@ namespace HorizonHotelWebsite.Models.Repositories
         }
         public void CreateBooking(Booking booking)
         {
-            List<Room> SameTypeRooms = _dataBaseContext.Rooms.Where(R => R.Type == booking.Room.Type).ToList();
+            List<Room> SameTypeRooms = _dataBaseContext.Rooms.Where(R => R.Type == booking.Room.Type).Include(R => R.Bookings).ToList();
             List<Room> SelectedRooms = new List<Room>();
+            bool Bookable = true;
             foreach(Room R in SameTypeRooms)
             {
                 if (R.Bookings != null)
                 {
                     foreach (Booking B in R.Bookings)
-
-
-                        if (booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn)
+                    {
+                        if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn))
                         {
-                            SelectedRooms.Add(R);
+                            Bookable = false;
+                            break;
 
                         }
+                       
+                    }
+
+                     if (Bookable)
+                        SelectedRooms.Add(R);
+                }
+                else
+                {
+                    SelectedRooms.Add(R);
+
                 }
                     
-                SelectedRooms.Add(R);
-               
                 
             }
 
-            if (SelectedRooms == null)
-                throw new Exception($"A room with type  {booking.Room.RoomId} in this period of time is not available!");
+            if (!Bookable)
+                throw new Exception($"A room with type  {booking.Room.Type} in this period of time is not available!");
             booking.BookingPlaced = DateTime.Now;
             booking.User.Role = RoleName.Customer;
 
