@@ -14,13 +14,13 @@ namespace HorizonHotelWebsite.Models.Services.Attributes
         {
         }
 
-        public string GetErrorMessage() => $"Check out date must be after check in date";
+        public string GetErrorMessage() => $"Check out date must be after check in date and they can't be before today.";
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
             var booking = (Booking) validationContext.ObjectInstance;
 
-            if (booking.CheckIn >= booking.CheckOut)
+            if (booking.CheckIn >= booking.CheckOut || booking.CheckIn < DateTime.Today)
             {
                 return new ValidationResult(GetErrorMessage());
             }
