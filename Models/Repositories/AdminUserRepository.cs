@@ -4,6 +4,7 @@ using System.Linq;
 using HorizonHotelWebsite.Data;
 using HorizonHotelWebsite.Models.Entities.user;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace HorizonHotelWebsite.Models.Repositories
 {
@@ -25,7 +26,7 @@ namespace HorizonHotelWebsite.Models.Repositories
         }
         public User GetById(int? id)
         {
-            return _dataBaseContext.Users.Find(id);
+            return _dataBaseContext.Users.Include(u => u.Bookings).ThenInclude(b => b.Room).FirstOrDefault(u => u.UserId == id);
         }
 
         public User CreateUser(User user)

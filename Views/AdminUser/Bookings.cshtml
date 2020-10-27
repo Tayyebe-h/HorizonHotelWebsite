@@ -18,7 +18,7 @@
             @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Id)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Room)
+            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Room.RoomNumber)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckIn)
@@ -27,7 +27,7 @@
             @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckOut)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).User)
+            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).User.FirstName)
         </th>
         <th></th>
     </tr>
@@ -40,7 +40,7 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Room)
+                @Html.DisplayFor(modelItem => item.Room.RoomNumber)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheckIn)
@@ -49,7 +49,7 @@
                 @Html.DisplayFor(modelItem => item.CheckOut)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User)
+                @Html.DisplayFor(modelItem => item.User.FirstName)
             </td>
         </tr>
     }
