@@ -1,5 +1,4 @@
 ﻿
-
 @model HorizonHotelWebsite.Models.Entities.booking.Booking;
 @{
     ViewData["Title"] = "Booking";
@@ -8,7 +7,6 @@
 
 <form asp-action="Index" method="post" class="form-horizontal" role="form">
     <h3>Add a booking!</h3>
-    @*<div asp-validation-summary="All" class="text-danger"></div>*@
 
 
     <div class="form-group">
@@ -45,22 +43,15 @@
 
 
     <div class="form-group">
-    <label asp-for="User.Role" class="col-md-2 control-label"></label>
-         <div class="col-md-5">
-              <select asp-for="User.Role" asp-items="Html.GetEnumSelectList<HorizonHotelWebsite.Models.Entities.user.RoleName>()" class="form-control">
-                <option value="">Choose user's role</option>
-              </select>
-           <span asp-validation-for="User.Role" class="text-danger"></span>
-         </div>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Room.RoomId" class="col-md-2 control-label"></label>
+        <label asp-for="Room.Type" class="col-md-2 control-label"></label>
         <div class="col-md-5">
-            <input asp-for="Room.RoomId" class="form-control" />
-            <span asp-validation-for="Room.RoomId" class="text-danger"></span>
+            <select asp-for="Room.Type" asp-items="Html.GetEnumSelectList<HorizonHotelWebsite.Models.Entities.room.RoomType>()" class="form-control">
+                <option value="">Choose room type</option>
+            </select>
+            <span asp-validation-for="Room.Type" class="text-danger"></span>
         </div>
     </div>
+
 
 
     <div class="form-group">
@@ -87,6 +78,9 @@
     </div>
 
 </form>
+
+
+
 
 
 

@@ -21,11 +21,16 @@ namespace HorizonHotelWebsite.Models.Repositories
 
         public void CreateBooking(Booking booking)
         {
-            bool has = _dataBaseContext.Rooms.Any(R => R.RoomId == booking.Room.RoomId);
+            bool roomExists = _dataBaseContext.Rooms.Any(R => R.RoomId == booking.Room.RoomId);
 
-            if (has)
+            if (!roomExists)
+                throw new Exception($"Room with number {booking.Room.RoomId} does not exist");
+            else 
             {
+
+
                 booking.BookingPlaced = DateTime.Now;
+
                 User user = new User()
                 {
                     FirstName = booking.User.FirstName,
@@ -34,31 +39,16 @@ namespace HorizonHotelWebsite.Models.Repositories
                     Email = booking.User.Email,
                     Role = booking.User.Role,
                 };
-                
+
+                booking.Room = _dataBaseContext.Rooms.SingleOrDefault(room => room.RoomId == booking.Room.RoomId);
                
-                booking.Room = new Room
-                {
-                    RoomId = booking.Room.RoomId,
-                    RoomNumber = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.RoomNumber).FirstOrDefault(),
-                    Price = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.Price).FirstOrDefault(),
-                    Type = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).Select(R => R.Type).FirstOrDefault(),
-                    Bookings = _dataBaseContext.Rooms.Where(R => R.RoomId == booking.Room.RoomId).SelectMany(R => R.Bookings).ToList(),
-
-                };
-
                 user.Bookings.Add(booking);
 
                 _dataBaseContext.Bookings.Add(booking);
                
                 _dataBaseContext.Rooms.Update(booking.Room);
-
-               
-
+                
                 _dataBaseContext.SaveChanges();
-            }
-            else
-            {
-                throw new Exception("This room doesn't exist.");
             }
         }
     }

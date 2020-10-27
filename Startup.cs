@@ -34,6 +34,7 @@ namespace HorizonHotelWebsite
             services.AddScoped<IAdminBookingRepository, AdminBookingRepository>();
             services.AddScoped<IAdminRoomRepo, AdminRoomRepo>();
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();
+            services.AddScoped<ICustomerBookingRepository, CustomerBookingRepository>();
 
             services.AddDbContext<DataBaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataBaseContext")));
@@ -65,7 +66,6 @@ namespace HorizonHotelWebsite
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
-
 
             });
 
