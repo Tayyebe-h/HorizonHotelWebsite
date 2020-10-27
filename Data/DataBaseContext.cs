@@ -15,15 +15,9 @@ namespace HorizonHotelWebsite.Data
     {
         public DataBaseContext(DbContextOptions options) : base(options)
         {
-
         }
         public DbSet<User> Users { get; set; }
-    
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        
-
-       
-
     }
 }

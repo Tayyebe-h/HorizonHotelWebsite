@@ -28,11 +28,20 @@ namespace HorizonHotelWebsite.Controllers
         }
 
         // GET: AdminRoomsController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            AdminRoomViewModel model = new AdminRoomViewModel();
-            model.Rooms = _adminRoomRepo.AllRooms;
-            var room = model.Rooms.FirstOrDefault(r => r.RoomId == id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var room = _adminRoomRepo.GetById(id);
+
+            if (room == null)
+            {
+                return NotFound();
+            }
+
             return View(room);
         }
 
@@ -47,21 +56,20 @@ namespace HorizonHotelWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind("RoomId, RoomNumber, Type, Price")] Room room)
         {
+            AdminRoomViewModel adminRoomViewModel = new AdminRoomViewModel();
             if (ModelState.IsValid)
             {
                 _adminRoomRepo.CreateRoom(room);
-                _adminRoomRepo.SaveChanges(room.RoomId);
+                _adminRoomRepo.UpdateWithRoom(room);
                 return RedirectToAction("Index");
             }
-            return View(room);
+            return View(adminRoomViewModel);
         }
 
         // GET: AdminRoomsController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            AdminRoomViewModel model = new AdminRoomViewModel();
-            model.Rooms = _adminRoomRepo.AllRooms;
-            var room = model.Rooms.FirstOrDefault(r => r.RoomId == id);
+            var room = _adminRoomRepo.GetById(id);
             return View(room);
         }
 
@@ -70,34 +78,36 @@ namespace HorizonHotelWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, [Bind("RoomId, RoomNumber, Type, Price")] Room room)
         {
+            AdminRoomViewModel adminRoomViewModel = new AdminRoomViewModel();
+
             if (ModelState.IsValid)
             {
-                //_adminRoomRepo.CreateRoom(room);
-                _adminRoomRepo.SaveChanges(room.RoomId);
+                _adminRoomRepo.UpdateWithRoom(room);
                 return RedirectToAction("Index");
             }
-            return View(room);
+            return View(adminRoomViewModel);
         }
 
         // GET: AdminRoomsController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-
-            AdminRoomViewModel model = new AdminRoomViewModel();
-            model.Rooms = _adminRoomRepo.AllRooms;
-            var room = model.Rooms.FirstOrDefault(r => r.RoomId == id);
+            var room = _adminRoomRepo.GetById(id);
             return View(room);
         }
 
         // POST: AdminRoomsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, [Bind("RoomId, RoomNumber, Type, Price")] Room room)
+        public ActionResult Delete(int id)
         {
-            //_adminRoomRepo.AllRooms(id);
             _adminRoomRepo.DeleteRoom(id);
-            _adminRoomRepo.SaveChanges(id);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Bookings(int? id)
+        {
+            var room = _adminRoomRepo.GetById(id);
+            return View(room);
         }
     }
 }
