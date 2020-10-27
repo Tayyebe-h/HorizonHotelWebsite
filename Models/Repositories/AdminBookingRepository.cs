@@ -2,6 +2,7 @@
 using HorizonHotelWebsite.Models.Entities.booking;
 using HorizonHotelWebsite.Models.Entities.room;
 using HorizonHotelWebsite.Models.Entities.user;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -30,19 +31,26 @@ namespace HorizonHotelWebsite.Models.Repositories
 
 
                 booking.BookingPlaced = DateTime.Now;
+                bool Bookable = true;
 
-                User user = new User()
+                booking.Room = _dataBaseContext.Rooms.Include(R => R.Bookings).SingleOrDefault(R=> R.RoomId == booking.Room.RoomId);
+
+                if (booking.Room.Bookings != null)
                 {
-                    FirstName = booking.User.FirstName,
-                    LastName = booking.User.LastName,
-                    Phone = booking.User.Phone,
-                    Email = booking.User.Email,
-                    Role = booking.User.Role,
-                };
 
-                booking.Room = _dataBaseContext.Rooms.SingleOrDefault(room => room.RoomId == booking.Room.RoomId);
-               
-                user.Bookings.Add(booking);
+                    foreach (Booking B in booking.Room.Bookings)
+                    {
+                        if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn))
+                        {
+                            Bookable = false;
+                            break;
+                        }
+                    }
+                }
+
+                if(!Bookable)
+                    throw new Exception("The room in this time is not available.");
+
 
                 _dataBaseContext.Bookings.Add(booking);
                

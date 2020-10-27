@@ -49,7 +49,7 @@ namespace HorizonHotelWebsite.Models.Repositories
             }
 
             if (!Bookable)
-                throw new Exception($"A room with type  {booking.Room.Type} in this period of time is not available!");
+                throw new Exception($"A room with type  {booking.Room.Type} in this time is not available.");
             booking.BookingPlaced = DateTime.Now;
             booking.User.Role = RoleName.Customer;
 
