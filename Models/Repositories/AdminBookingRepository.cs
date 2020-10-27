@@ -42,15 +42,14 @@ namespace HorizonHotelWebsite.Models.Repositories
 
                 booking.Room = _dataBaseContext.Rooms.SingleOrDefault(room => room.RoomId == booking.Room.RoomId);
                
+                user.Bookings.Add(booking);
 
                 _dataBaseContext.Bookings.Add(booking);
                
                 _dataBaseContext.Rooms.Update(booking.Room);
                 
                 _dataBaseContext.SaveChanges();
-
             }
-
         }
     }
 }

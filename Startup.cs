@@ -36,9 +36,6 @@ namespace HorizonHotelWebsite
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();
             services.AddScoped<ICustomerBookingRepository, CustomerBookingRepository>();
 
-
-
-
             services.AddDbContext<DataBaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataBaseContext")));
 

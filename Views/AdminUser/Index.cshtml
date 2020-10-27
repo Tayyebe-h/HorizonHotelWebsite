@@ -31,7 +31,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Role)
         </th>
-        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -57,9 +56,10 @@
                 @Html.DisplayFor(modelItem => item.Role)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {/* id=item.PrimaryKey */}) |
-                @Html.ActionLink("Details", "Details", new {id = item.UserId}) |
-                @Html.ActionLink("Delete", "Delete", new {id = item.UserId})
+                <a asp-action="Bookings" asp-route-id="@item.UserId">Bookings</a> |
+                <a asp-action="Edit" asp-route-id="@item.UserId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UserId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UserId">Delete</a>
             </td>
         </tr>
     }

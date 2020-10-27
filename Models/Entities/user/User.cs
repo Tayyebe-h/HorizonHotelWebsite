@@ -38,6 +38,11 @@ namespace HorizonHotelWebsite.Models.Entities.user
         public string Email { get; set; }
         public string Password { get; set; }
         public RoleName Role { get; set; }
-        public virtual ICollection<Booking> Bookings { get; set; }
+        public ICollection<Booking> Bookings { get; set; }
+
+        public User()
+        {
+            Bookings = new List<Booking>();
+        }
     }
 }
