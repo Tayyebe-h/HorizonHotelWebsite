@@ -34,9 +34,7 @@ namespace HorizonHotelWebsite.Models.Repositories
                         {
                             Bookable = false;
                             break;
-
                         }
-                       
                     }
 
                      if (Bookable)
@@ -48,7 +46,6 @@ namespace HorizonHotelWebsite.Models.Repositories
 
                 }
                     
-                
             }
 
             if (!Bookable)
@@ -56,14 +53,6 @@ namespace HorizonHotelWebsite.Models.Repositories
             booking.BookingPlaced = DateTime.Now;
             booking.User.Role = RoleName.Customer;
 
-            User user = new User()
-            {
-                FirstName = booking.User.FirstName,
-                LastName = booking.User.LastName,
-                Phone = booking.User.Phone,
-                Email = booking.User.Email,
-                Role = booking.User.Role,
-            };
 
             booking.Room = SelectedRooms.FirstOrDefault();
            _dataBaseContext.Bookings.Add(booking);
