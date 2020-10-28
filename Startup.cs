@@ -35,6 +35,8 @@ namespace HorizonHotelWebsite
             services.AddScoped<IAdminRoomRepo, AdminRoomRepo>();
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();
             services.AddScoped<ICustomerBookingRepository, CustomerBookingRepository>();
+            services.AddScoped<IPayment, PaymentRepo>();
+
 
             services.AddDbContext<DataBaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("DataBaseContext")));

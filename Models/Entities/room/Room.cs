@@ -25,8 +25,11 @@ namespace HorizonHotelWebsite.Models.Entities.room
         public int RoomId { get; set; }
         
         public string RoomNumber { get; set; }
+
         public RoomType Type { get; set; }
+
         public decimal Price { get; set; }
+
         public virtual ICollection<Booking> Bookings { get; set; }
       
         
