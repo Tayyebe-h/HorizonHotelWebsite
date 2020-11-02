@@ -37,6 +37,7 @@ namespace HorizonHotelWebsite.Models.Repositories
 
                 if (booking.Room.Bookings != null)
                 {
+
                     foreach (Booking B in booking.Room.Bookings)
                     {
                         if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn))
@@ -50,14 +51,13 @@ namespace HorizonHotelWebsite.Models.Repositories
                 if(!Bookable)
                     throw new Exception("The room in this time is not available.");
 
+
                 _dataBaseContext.Bookings.Add(booking);
                
                 _dataBaseContext.Rooms.Update(booking.Room);
                 
                 _dataBaseContext.SaveChanges();
-
             }
-
         }
     }
 }

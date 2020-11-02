@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HorizonHotelWebsite.ViewsModels;
+using HorizonHotelWebsite.Models.Entities.payment;
 
 namespace HorizonHotelWebsite.Data
 {
@@ -15,15 +16,11 @@ namespace HorizonHotelWebsite.Data
     {
         public DataBaseContext(DbContextOptions options) : base(options)
         {
-
         }
         public DbSet<User> Users { get; set; }
-    
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
-        
 
-       
-
+        public DbSet<Payment> Payments { get; set; }
     }
 }

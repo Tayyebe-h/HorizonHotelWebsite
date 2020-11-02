@@ -12,11 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20201004104415_addingPassword.cs" />
-    <Compile Remove="Migrations\20201004104415_addingPassword.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\AdminTemplate\assets\images\loader.svg" />
     <None Include="wwwroot\AdminTemplate\assets\libs\js\dashboard-ecommerce.js" />
     <None Include="wwwroot\AdminTemplate\assets\libs\js\dashboard-finance.js" />
@@ -339,6 +334,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.8" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.8">
       <PrivateAssets>all</PrivateAssets>
@@ -351,6 +347,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Moq" Version="4.14.7" />
+    <PackageReference Include="Xunit" Version="2.4.1" />
   </ItemGroup>
 
 </Project>
