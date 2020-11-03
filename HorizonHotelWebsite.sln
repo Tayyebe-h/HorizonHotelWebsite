@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HorizonHotelWebsite", "HorizonHotelWebsite.csproj", "{561C823D-6A62-4663-9312-C9DDB6FD00AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HorizonHotelWebsite", "HorizonHotelWebsite\HorizonHotelWebsite.csproj", "{561C823D-6A62-4663-9312-C9DDB6FD00AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B2842942-5848-485C-BF77-A31001B8D0BE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{2116B471-8ADD-4527-BDD1-65D1C09AD438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorizonHotelWebsite.Test", "..\HorizonHotelWebsite.Test\HorizonHotelWebsite.Test.csproj", "{9A7D0285-736B-479C-A2DB-90C0CFEB4339}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorizonHotelWebsite.Test", "HorizonHotelWebsite.Test\HorizonHotelWebsite.Test.csproj", "{8E0FCEDE-2BFA-4984-B507-3D37F6182AB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,20 +21,19 @@ Global
 		{561C823D-6A62-4663-9312-C9DDB6FD00AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{561C823D-6A62-4663-9312-C9DDB6FD00AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{561C823D-6A62-4663-9312-C9DDB6FD00AF}.Release|Any CPU.Build.0 = Release|Any CPU
-
-		{9A7D0285-736B-479C-A2DB-90C0CFEB4339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A7D0285-736B-479C-A2DB-90C0CFEB4339}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A7D0285-736B-479C-A2DB-90C0CFEB4339}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A7D0285-736B-479C-A2DB-90C0CFEB4339}.Release|Any CPU.Build.0 = Release|Any CPU
-
+		{8E0FCEDE-2BFA-4984-B507-3D37F6182AB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E0FCEDE-2BFA-4984-B507-3D37F6182AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E0FCEDE-2BFA-4984-B507-3D37F6182AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E0FCEDE-2BFA-4984-B507-3D37F6182AB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{561C823D-6A62-4663-9312-C9DDB6FD00AF} = {2116B471-8ADD-4527-BDD1-65D1C09AD438}
-
-		{9A7D0285-736B-479C-A2DB-90C0CFEB4339} = {B2842942-5848-485C-BF77-A31001B8D0BE}
-
-		{F79C4A7B-0345-4228-A146-354630677E11} = {B2842942-5848-485C-BF77-A31001B8D0BE}
-
+		{8E0FCEDE-2BFA-4984-B507-3D37F6182AB2} = {B2842942-5848-485C-BF77-A31001B8D0BE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7F75B68-CEE1-4BC2-A137-888D6D899141}
+	EndGlobalSection
+EndGlobal
