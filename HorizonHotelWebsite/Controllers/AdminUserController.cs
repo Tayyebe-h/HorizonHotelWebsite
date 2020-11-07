@@ -65,14 +65,14 @@ namespace HorizonHotelWebsite.Controllers
             return View(adminUserViewModel);
         }
 
-        public ActionResult Edit(int? id, IAdminUserRepository adminUserRepository)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var user = adminUserRepository.GetById(id);
+            var user = _adminUserRepository.GetById(id);
 
             if (user == null)
             {
