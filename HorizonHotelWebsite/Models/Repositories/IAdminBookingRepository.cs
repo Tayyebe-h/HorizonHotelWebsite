@@ -9,5 +9,9 @@ namespace HorizonHotelWebsite.Models.Repositories
     public interface IAdminBookingRepository
     {
         void CreateBooking(Booking booking);
+        IEnumerable<Booking> GetAll();
+        Booking GetByID(int? id);
+        void Delete(Booking booking);
+        void Update(Booking booking);
     }
 }

@@ -36,5 +36,56 @@ namespace HorizonHotelWebsite.Controllers
             ViewBag.BookingCompleteMessage = "The new booking is added.";
             return View();
         }
+
+        public IActionResult List()
+        {
+            return View(_bookingRepository.GetAll());
+        }
+
+        public ActionResult Details(int? id)
+        {
+            var booking = _bookingRepository.GetByID(id);
+            return View(booking);
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            var booking = _bookingRepository.GetByID(id);
+            return View(booking);
+
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Booking booking)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                _bookingRepository.Update(booking);
+                return RedirectToAction("List");
+            }
+
+            return View(booking);
+
+        }
+
+
+        public ActionResult Delete(int? id)
+        {
+            var booking = _bookingRepository.GetByID(id);
+            return View(booking);
+        }
+
+       
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            Booking booking = new Booking();
+            booking.Id = id;
+            _bookingRepository.Delete(booking);
+            return RedirectToAction("List");
+        }
+
+
     }
 }
