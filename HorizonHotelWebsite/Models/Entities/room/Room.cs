@@ -30,7 +30,7 @@ namespace HorizonHotelWebsite.Models.Entities.room
 
         public decimal Price { get; set; }
 
-        public virtual ICollection<Booking> Bookings { get; set; }
+        public virtual List<Booking> Bookings { get; set; }
       
         
     }
