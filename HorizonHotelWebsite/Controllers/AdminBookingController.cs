@@ -33,7 +33,7 @@ namespace HorizonHotelWebsite.Controllers
 
         public IActionResult BookingComplete()
         {
-            ViewBag.BookingCompleteMessage = "The new booking is added.";
+            ViewBag.BookingCompleteMessage = "The booking is added.";
             return View();
         }
 
