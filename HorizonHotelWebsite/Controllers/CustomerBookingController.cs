@@ -27,12 +27,20 @@ namespace HorizonHotelWebsite.Controllers
             if (ModelState.IsValid)
             {
                 _bookingRepository.CreateBooking(booking);
-                return RedirectToAction("BookingComplete", "AdminBooking");
+                return RedirectToAction("BookingComplete");
             }
             return View(booking);
         }
 
+        public IActionResult BookingComplete()
+        {
+            ViewBag.BookingCompleteMessage = "The booking is added.";
+            return View();
+        }
 
-        
+
+
+
+
     }
 }
