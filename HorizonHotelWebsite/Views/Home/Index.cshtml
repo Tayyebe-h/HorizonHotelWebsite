@@ -2,14 +2,213 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div>
-    <h2 style="text-align:center">Horizon Hotel</h2>
-    <img class="img-fluid img-thumbnail" src="https://static.arageek.com/wp-content/uploads/ibda3world/2018/04/Safari-Court-Hotel-Pool.jpg" alt="Responsive image">
-    @*<div class="text-block">
-            <h4>Nature</h4>
-            <p>What a beautiful sunrise</p>
-        </div>*@
+
+
+
+<!--- Image Slider -->
+<div id="slides" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#slides" data-slide-to="0" class="active"></li>
+        <li data-target="#slides" data-slide-to="1"></li>
+        <li data-target="#slides" data-slide-to="2"></li>
+    </ul>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/img/stockholm.jpg">
+            <div class="carousel-caption">
+                <h1 class="dispaly-2"> Horizon</h1>
+                <h3>Hotel</h3>
+                <button type="button" class="btn btn-primary btn-lg">Booking Now</button>
+                <!--<button type="button" class="btn btn-primary btn-lg">Get</button>-->
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/img/16256-113855-f63827000_3xl.webp">
+        </div>
+        <div class="carousel-item ">
+            <img src="~/img/249117715.jpg">
+        </div>
+    </div>
+
 </div>
+
+<!--- Jumbotron -->
+
+<div class="container-fluid">
+    <div class="row jumbotron">
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+            <p class="lead">If You Want To Be a Member</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                <a href="#"><button type="button" class="btn btn-outline-seondary btn-lg">Registeration</button></a>
+        </div>
+
+    </div>
+</div>
+
+<!--- Welcome Section -->
+
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">Stay different</h1>
+        </div>
+        <hr>
+        <div class="col-12">
+            <p class="lead">Stylish living spaces for business and leisure in some of the world’s favorite destinations.</p>
+        </div>
+    </div>
+</div>
+
+<!--- Three Column Section -->
+<div class="container-fluid padding">
+    <div class="row text-center padding">
+        <div>
+
+        </div>
+    </div>
+    <hr class="my-4">
+</div>
+
+<!--- Two Column Section -->
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-6">
+            <h2>Restaurant and bars</h2>
+            <p>Local ingredients. Fresh produce. Chef-driven cooking. Watermark Restaurant and Lounge makes it easy to stay on site for some of the best Canadian cuisine in Toronto. Best of all, every meal feels like a special occasion thanks to our incredible lakefront views.</p>
+            <p>Savour baked squash with maple syrup, Bosc pears, and olive oil, or order our beef short rib, braised for 24 hours and finished with a Niagara pinot noir reduction. For breakfast, try free-run local eggs cooked the way you like them or treat yourself to lemon meringue toast from our room service menu.</p>
+            <p>Located inside the restaurant, Watermark Lounge is a stylish spot for a local craft brew or a glass of sparkling rosé. In warmer months, head to the fifth-floor Lakeview Pool Lounge for a delish snack and a drink that transports you to the tropics. Sip while soaking up the city’s best views of the CN Tower on one side and tranquil open sky and water on the other.</p>
+        </div>
+        <div class="col-lg-6">
+            <img src="~/img/guldbaren-nobis-hotel_rectangle.jpg" class="img-fluid">
+
+        </div>
+    </div>
+</div>
+<hr class="my-4">
+<!--- Fixed background -->
+
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">SPA & RELAX</h1>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<div id="slides" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+        <li data-target="#slides" data-slide-to="0" class="active"></li>
+    </ul>
+    <div class="carousel-inner">
+        <div class="carousel-New">
+            <img src="~/img/spa-relax-ekerum-e1547393496402.jpg">
+        </div>
+    </div>
+</div>
+
+@*<div class="fixed-wrap">
+    <div id="fixed">
+    </div>
+</div>*@
+
+<!--- Emoji Section -->
+<!--- Meet the team -->
+
+<div class="container-fluid padding">
+    <div class="row welcome text-center">
+        <div class="col-12">
+            <h1 class="display-4">Make Your Booking</h1>
+        </div>
+        <hr>
+    </div>
+</div>
+
+<!--- Cards -->
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/img/DBed.webp">
+                <div class="card-body">
+                    <h4 class="card-tittle">Double Bed Room</h4>
+                    <p class="card-text">Bright and peaceful with warm wood touches,an area of 25 sqm and come with a queen bed.</p>
+                    <button type="button" class="btn btn-primary btn-lg">Booking Now</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/img/16256-114199-f79733401_3xl.jpg">
+                <div class="card-body">
+                    <h4 class="card-tittle">Twin Room</h4>
+                    <p class="card-text">Our Standard Twin Rooms provide the best peaceful haven in the heart of the city.</p>
+                    <button type="button" class="btn btn-primary btn-lg">Booking Now</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4">
+            <div class="card">
+                <img class="card-img-top" src="~/img/16256-114199-f79733499_3xl.jpg">
+                <div class="card-body">
+                    <h4 class="card-tittle">Suite</h4>
+                    <p class="card-text">Feel luxury with us, our priority is the comfort and relaxation of our guests.</p>
+                    <button type="button" class="btn btn-primary btn-lg">Booking Now</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<hr class="my-4">
+<!--- Two Column Section -->
+
+<div class="container-fluid padding">
+    <div class="row padding">
+        <div class="col-md-12 col-lg-6">
+            <h2>GYM</h2>
+            <p>The opening hours for our facilities vary during the summer months and on bank holiday weekends. Please contact the hotel for current opening hours.</p>
+            <br>
+        </div>
+        <div class="col-lg-6">
+            <img src="~/img/gym1-1024x766.jpg" class="img-fluid">
+        </div>
+    </div>
+    <hr class="my-4">
+</div>
+
+<!--- Connect -->
+
+<div class="container-fluid padding">
+    <div class="row text-center padding">
+        <div class="col-12">
+            <h2>Connect</h2>
+        </div>
+        <div class="col-12 social padding">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-google-plus-g"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!--<div>
+    <h2 style="text-align:center">Horizon Hotel</h2>
+    <img class="img-fluid img-thumbnail" src="https://static.arageek.com/wp-content/uploads/ibda3world/2018/04/Safari-Court-Hotel-Pool.jpg" alt="Responsive image">-->
+@*<div class="text-block">
+        <h4>Nature</h4>
+        <p>What a beautiful sunrise</p>
+    </div>*@
+<!--</div>
 <div>
     <div class="row">
         <div class="col-sm-4">
@@ -45,12 +244,12 @@
             <p style="color:brown">From desert adventures to urban romance, falling in love has never been easier</p>
             <p><a href="">Read more ></a></p>
         </div>
-    </div>
-    @* Add Text To Img Bootstrap and CSS... *@
-    @*<div class="jumbotorn big-banner" style="height: 500px;">
-            <div class="col-4">
-                <h1 class="display-5">Horizon</h1>
-                <p class="lead">Get ksakdsad</p>
-            </div>
-        </div>*@
-</div>
+    </div>-->
+@* Add Text To Img Bootstrap and CSS... *@
+@*<div class="jumbotorn big-banner" style="height: 500px;">
+        <div class="col-4">
+            <h1 class="display-5">Horizon</h1>
+            <p class="lead">Get ksakdsad</p>
+        </div>
+    </div>*@
+<!--</div>-->
