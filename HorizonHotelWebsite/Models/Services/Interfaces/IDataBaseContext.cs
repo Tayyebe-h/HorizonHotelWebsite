@@ -12,7 +12,7 @@ namespace HorizonHotelWebsite.Services.Interfaces
 {
     public interface IDataBaseContext
     {
-        DbSet<User> Users { get; set; }
+        DbSet<User> Userss { get; set; }
         DbSet<Room> Rooms { get; set; }
         DbSet<Booking> Bookings { get; set; }
 
