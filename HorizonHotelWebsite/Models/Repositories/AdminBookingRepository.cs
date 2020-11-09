@@ -23,7 +23,7 @@ namespace HorizonHotelWebsite.Models.Repositories
         public void CreateBooking(Booking booking)
         {
             bool RoomExists = _dataBaseContext.Rooms.Any(R => R.RoomId == booking.Room.RoomId);
-            bool UserExists = _dataBaseContext.Users.Any(U => U.UserId == booking.User.UserId);
+            bool UserExists = _dataBaseContext.Userss.Any(U => U.UserId == booking.User.UserId);
             if(!RoomExists)
                 throw new Exception($"Room with Id {booking.Room.RoomId} does not exist");
             else if(!UserExists)
@@ -31,7 +31,7 @@ namespace HorizonHotelWebsite.Models.Repositories
 
             else if (RoomExists && UserExists)
             {
-                booking.User= _dataBaseContext.Users.Include(U => U.Bookings).SingleOrDefault(U => U.UserId == booking.User.UserId);
+                booking.User= _dataBaseContext.Userss.Include(U => U.Bookings).SingleOrDefault(U => U.UserId == booking.User.UserId);
                 var bookable = CheckAvailability(booking);
                 if (bookable)
                 {
@@ -90,7 +90,7 @@ namespace HorizonHotelWebsite.Models.Repositories
         public void Update(Booking booking)
         {
             bool RoomExists = _dataBaseContext.Rooms.Any(R => R.RoomId == booking.RoomId);
-            bool UserExists = _dataBaseContext.Users.Any(U => U.UserId == booking.UserId);
+            bool UserExists = _dataBaseContext.Userss.Any(U => U.UserId == booking.UserId);
             if(!RoomExists)
                 throw new Exception($"Room with Id {booking.RoomId} does not exist");
             else if(!UserExists)

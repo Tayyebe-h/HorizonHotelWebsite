@@ -1,9 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Hotel_Tnt</title>
+    <title>@ViewData["Title"] - Horizon Hotel</title>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -15,7 +16,7 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="AdminRooms" asp-action="Index"><img src="~/img/Horizon.png"></a>
+                <a class="navbar-brand" asp-area="" asp-controller="AdminBooking" asp-action="List"><img src="~/img/Horizon.png"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,13 +26,13 @@
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Rooms" asp-action="Index">Rooms</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Contact Us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
+                            <partial name="_LoginPartial" />
                         </li>
                     </ul>
                 </div>

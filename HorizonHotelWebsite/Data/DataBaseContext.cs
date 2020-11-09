@@ -9,15 +9,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using HorizonHotelWebsite.ViewsModels;
 using HorizonHotelWebsite.Models.Entities.payment;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace HorizonHotelWebsite.Data
 {
-    public class DataBaseContext:DbContext, IDataBaseContext
+    public class DataBaseContext: IdentityDbContext<IdentityUser>, IDataBaseContext
     {
         public DataBaseContext(DbContextOptions options) : base(options)
         {
         }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> Userss { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
 

@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using HorizonHotelWebsite.Models.Entities.room;
 using HorizonHotelWebsite.Models.Repositories;
 using HorizonHotelWebsite.ViewsModels.RoomsViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HorizonHotelWebsite.Controllers
 {
+    [Authorize]
     public class AdminRoomsController : Controller
     {
         private readonly IAdminRoomRepo _adminRoomRepo;
