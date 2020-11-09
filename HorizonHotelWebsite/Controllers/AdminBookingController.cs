@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using HorizonHotelWebsite.Models.Entities.booking;
 using HorizonHotelWebsite.Models.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace HorizonHotelWebsite.Controllers
 {
@@ -15,6 +16,8 @@ namespace HorizonHotelWebsite.Controllers
         {
             _bookingRepository = bookingRepository;
         }
+
+       
         public IActionResult Index()
         {
             return View();

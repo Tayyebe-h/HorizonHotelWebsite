@@ -84,51 +84,45 @@ namespace HorizonHotelWebsite.Models.Repositories
 
         public Booking GetByID(int? id)
         {
-            return _dataBaseContext.Bookings.Include(B => B.Room).Include(B => B.User).FirstOrDefault(B => B.Id == id);
+            return _dataBaseContext.Bookings.Include(B => B.Room).ThenInclude(R => R.Bookings).Include(B => B.User).ThenInclude(U => U.Bookings).FirstOrDefault(B => B.Id == id);
         }
+
+
+
 
         public void Update(Booking booking)
         {
-            bool RoomExists = _dataBaseContext.Rooms.Any(R => R.RoomId == booking.RoomId);
-            bool UserExists = _dataBaseContext.Userss.Any(U => U.UserId == booking.UserId);
-            if(!RoomExists)
-                throw new Exception($"Room with Id {booking.RoomId} does not exist");
-            else if(!UserExists)
-                throw new Exception($" User with Id {booking.UserId} does not exist");
-
-
-            else if (RoomExists && UserExists)
+            var room = _dataBaseContext.Rooms.Include(r => r.Bookings).SingleOrDefault(R => R.RoomId == booking.Room.RoomId);
+            var user = _dataBaseContext.Users.Include(r => r.Bookings).SingleOrDefault(U => U.UserId == booking.User.UserId);
+            var persistedBooking = _dataBaseContext.Bookings.SingleOrDefault(b => b.Id == booking.Id);
+            if (room == null)
+                throw new Exception($"Room with Id {booking.Room.RoomId} does not exist");
+            if (user == null)
+                throw new Exception($"User with Id {booking.User.UserId} does not exist");
+            if (persistedBooking == null)
+                throw new Exception($"Booking with Id {booking.User.UserId} does not exist");
+            bool Bookable = true;
+            if (room.Bookings != null)
             {
-                booking.BookingPlaced = DateTime.Now;
-                //booking.User = _dataBaseContext.Users.Include(U => U.Bookings).SingleOrDefault(U => U.UserId == booking.UserId);
-                //booking.Room = _dataBaseContext.Rooms.Include(R => R.Bookings).SingleOrDefault(R => R.RoomId == booking.RoomId);
-                //bool Bookable = true;
-                //if (booking.Room.Bookings != null)
-                //{
-
-                //    foreach (Booking B in booking.Room.Bookings)
-                //    {
-                //        if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn) && (B.Id != booking.Id))
-                //        {
-                //            Bookable = false;
-                //            break;
-                //        }
-                //    }
-                //}
-
-                //if (!Bookable)
-                //    throw new Exception("The room in this time is not available.");
-
-                //var bookingTemp = _dataBaseContext.Bookings.SingleOrDefault(b => b.Id == booking.Id);
-                //bookingTemp = booking;
-                _dataBaseContext.Bookings.Update(booking);
-                _dataBaseContext.SaveChanges();
-
-
+                foreach (var B in room.Bookings)
+                {
+                    if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn) && (B.Id != booking.Id))
+                    {
+                        Bookable = false;
+                        break;
+                    }
+                }
             }
+            if (!Bookable)
+                throw new Exception("The room in this time is not available.");
+            persistedBooking.User = user;
+            persistedBooking.Room = room;
+            persistedBooking.BookingPlaced = DateTime.Now;
+            persistedBooking.CheckIn = booking.CheckIn;
+            persistedBooking.CheckOut = booking.CheckOut;
 
+            _dataBaseContext.SaveChanges();
         }
-
 
     }
 }

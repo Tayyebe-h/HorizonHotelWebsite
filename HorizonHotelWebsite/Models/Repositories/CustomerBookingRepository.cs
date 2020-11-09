@@ -56,9 +56,9 @@ namespace HorizonHotelWebsite.Models.Repositories
 
             booking.Room = SelectedRooms.FirstOrDefault();
            _dataBaseContext.Bookings.Add(booking);
-            
-            _dataBaseContext.Rooms.Update(booking.Room);
-            
+
+            //_dataBaseContext.Rooms.Update(booking.Room);
+
             _dataBaseContext.SaveChanges();
 
 
