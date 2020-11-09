@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/HorizonHotelWebsite/Views/Shared/CustomException.cshtml
+/HorizonHotelWebsite/Models/Filters/CustomExceptionFilter.cs
