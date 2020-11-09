@@ -10,7 +10,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using HorizonHotelWebsite.Data;
 using Microsoft.EntityFrameworkCore;
-using HorizonHotelWebsite.Services.Interfaces;
 using HorizonHotelWebsite.Models.Repositories;
 using Microsoft.AspNetCore.Identity;
 
@@ -30,8 +29,7 @@ namespace HorizonHotelWebsite
         {
             services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<DataBaseContext>();
 
-            services.AddScoped<IDataBaseContext, DataBaseContext>();
-
+            
             services.AddScoped<IAdminBookingRepository, AdminBookingRepository>();
             services.AddScoped<IAdminRoomRepo, AdminRoomRepo>();
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();

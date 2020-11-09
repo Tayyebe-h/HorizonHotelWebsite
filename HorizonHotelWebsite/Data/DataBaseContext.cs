@@ -2,7 +2,6 @@
 using HorizonHotelWebsite.Models.Entities.booking;
 using HorizonHotelWebsite.Models.Entities.room;
 using HorizonHotelWebsite.Models.Entities.user;
-using HorizonHotelWebsite.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace HorizonHotelWebsite.Data
 {
-    public class DataBaseContext: IdentityDbContext<IdentityUser>, IDataBaseContext
+    public class DataBaseContext: IdentityDbContext<IdentityUser>
     {
         public DataBaseContext(DbContextOptions options) : base(options)
         {

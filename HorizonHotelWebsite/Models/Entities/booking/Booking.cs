@@ -14,6 +14,7 @@ namespace HorizonHotelWebsite.Models.Entities.booking
 {
     public class Booking
     {
+        [Display(Name = "Booking Id")]
         public int Id { get; set; }
         
         public virtual User User { get; set; }
@@ -32,6 +33,7 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         public DateTime CheckOut { get; set; }
         [BindNever]
         [ScaffoldColumn(false)]
+        [Display(Name = "Booking placed at")]
         public DateTime BookingPlaced { get; set; }
 
     }

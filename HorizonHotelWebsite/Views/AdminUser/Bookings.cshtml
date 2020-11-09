@@ -13,24 +13,28 @@
 </p>
 <table class="table">
     <thead>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Room.RoomNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckIn)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckOut)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).User.FirstName)
-        </th>
-        <th></th>
-    </tr>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Room.RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Room.RoomNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Room.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckOut)
+            </th>
+
+            <th></th>
+        </tr>
     </thead>
     <tbody>
     @foreach (var item in Model.Bookings)
@@ -40,16 +44,19 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Room.RoomId)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Room.RoomNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Room.Type)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheckIn)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheckOut)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FirstName)
             </td>
         </tr>
     }

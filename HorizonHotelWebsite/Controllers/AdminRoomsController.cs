@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace HorizonHotelWebsite.Controllers
 {
-    [Authorize]
+  
     public class AdminRoomsController : Controller
     {
         private readonly IAdminRoomRepo _adminRoomRepo;

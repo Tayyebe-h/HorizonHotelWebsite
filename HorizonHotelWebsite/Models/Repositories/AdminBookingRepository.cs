@@ -93,7 +93,7 @@ namespace HorizonHotelWebsite.Models.Repositories
         public void Update(Booking booking)
         {
             var room = _dataBaseContext.Rooms.Include(r => r.Bookings).SingleOrDefault(R => R.RoomId == booking.Room.RoomId);
-            var user = _dataBaseContext.Users.Include(r => r.Bookings).SingleOrDefault(U => U.UserId == booking.User.UserId);
+            var user = _dataBaseContext.Userss.Include(r => r.Bookings).SingleOrDefault(U => U.UserId == booking.User.UserId);
             var persistedBooking = _dataBaseContext.Bookings.SingleOrDefault(b => b.Id == booking.Id);
             if (room == null)
                 throw new Exception($"Room with Id {booking.Room.RoomId} does not exist");

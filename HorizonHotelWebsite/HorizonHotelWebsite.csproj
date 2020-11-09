@@ -353,4 +353,8 @@
     <PackageReference Include="Xunit" Version="2.4.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Services\Interfaces\" />
+  </ItemGroup>
+
 </Project>
