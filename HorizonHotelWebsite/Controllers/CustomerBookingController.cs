@@ -23,7 +23,10 @@ namespace HorizonHotelWebsite.Controllers
         [HttpPost]
         public IActionResult Index(Booking booking)
         {
-
+            //if (User.Identity.IsAuthenticated)
+            //{
+            //    //booking.User = 
+            //}
             if (ModelState.IsValid)
             {
                 _bookingRepository.CreateBooking(booking);

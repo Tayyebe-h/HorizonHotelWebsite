@@ -26,7 +26,7 @@ namespace HorizonHotelWebsite.Models.Repositories
         }
         public User GetById(int? id)
         {
-            return _dataBaseContext.Userss.Include(u => u.Bookings).ThenInclude(b => b.Room).FirstOrDefault(u => u.UserId == id);
+            return _dataBaseContext.Userss.Include(u => u.Bookings).ThenInclude(b => b.Room).FirstOrDefault(u => u.Id == id);
         }
 
         public User CreateUser(User user)
@@ -54,7 +54,7 @@ namespace HorizonHotelWebsite.Models.Repositories
             return user;
         }
 
-        public User Update(int id)
+        public User Update(int? id)
         {
             var user = GetById(id);
 

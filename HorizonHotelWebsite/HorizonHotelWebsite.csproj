@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Models\Services\Interfaces\**" />
     <Compile Remove="Views\Rooms\**" />
+    <Content Remove="Models\Services\Interfaces\**" />
     <Content Remove="Views\Rooms\**" />
+    <EmbeddedResource Remove="Models\Services\Interfaces\**" />
     <EmbeddedResource Remove="Views\Rooms\**" />
+    <None Remove="Models\Services\Interfaces\**" />
     <None Remove="Views\Rooms\**" />
   </ItemGroup>
 
@@ -335,7 +339,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.9" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.9" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.9">
@@ -354,7 +357,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Services\Interfaces\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

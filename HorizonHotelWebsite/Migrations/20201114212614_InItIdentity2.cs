@@ -2,7 +2,7 @@
 
 namespace HorizonHotelWebsite.Migrations
 {
-    public partial class AfterIdentity : Migration
+    public partial class InItIdentity2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
