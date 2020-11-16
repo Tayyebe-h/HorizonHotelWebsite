@@ -17,7 +17,7 @@ namespace HorizonHotelWebsite.Models.Repositories
 
         public User DeleteUser(User user);
 
-        public User Update(int id);
+        public User Update(int? id);
 
         public User UpdateWithUser(User user);
     }

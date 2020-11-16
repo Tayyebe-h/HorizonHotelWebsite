@@ -84,10 +84,10 @@ namespace HorizonHotelWebsite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, [Bind("UserId, FirstName, LastName, Phone, Email, Role")]
+        public ActionResult Edit(int? id, [Bind("UserId, FirstName, LastName, Phone, Email, Role")]
             User user)
         {
-            if (id != user.UserId)
+            if (id != user.Id)
             {
                 return NotFound();
             }
@@ -101,7 +101,7 @@ namespace HorizonHotelWebsite.Controllers
             return View(user);
         }
 
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             var user = _adminUserRepository.GetById(id);
             return View(user);
@@ -109,14 +109,14 @@ namespace HorizonHotelWebsite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id,
+        public ActionResult Delete(string id,
             User user)
         {
             _adminUserRepository.DeleteUser(user);
             return RedirectToAction("Index");
         }
 
-        public ActionResult Bookings(int? id)
+        public ActionResult Bookings(int id)
         {
             var user = _adminUserRepository.GetById(id);
             return View(user);
