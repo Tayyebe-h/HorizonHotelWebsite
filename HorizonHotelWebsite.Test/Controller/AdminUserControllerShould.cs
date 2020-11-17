@@ -62,14 +62,6 @@ namespace HorizonHotelWebsite.Test.Controller
         }
 
         [Fact]
-        public void ReturnViewWhenEditReceivesValidId()
-        {
-            IActionResult result = _sut.Edit(1);
-
-            Assert.IsType<ViewResult>(result);
-        }
-
-        [Fact]
         public void ReturnViewWhenEditPostHasInvalidModelState()
         {
             _sut.ModelState.AddModelError("x", "Test Error");
