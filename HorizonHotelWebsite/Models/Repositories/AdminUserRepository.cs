@@ -21,19 +21,19 @@ namespace HorizonHotelWebsite.Models.Repositories
         {
             get
             {
-                return _dataBaseContext.Userss;
+                return _dataBaseContext.ApplicationUsers;
             }
         }
         public User GetById(int? id)
         {
-            return _dataBaseContext.Userss.Include(u => u.Bookings).ThenInclude(b => b.Room).FirstOrDefault(u => u.UserId == id);
+            return _dataBaseContext.ApplicationUsers.Include(u => u.Bookings).ThenInclude(b => b.Room).FirstOrDefault(u => u.UserId == id);
         }
 
         public User CreateUser(User user)
         {
             if (user != null)
             {
-                _dataBaseContext.Userss.Add(user);
+                _dataBaseContext.ApplicationUsers.Add(user);
                 _dataBaseContext.SaveChanges();
                 return user;
             }
@@ -46,7 +46,7 @@ namespace HorizonHotelWebsite.Models.Repositories
 
             if (user != null)
             {
-                _dataBaseContext.Userss.Remove(user);
+                _dataBaseContext.ApplicationUsers.Remove(user);
                 _dataBaseContext.SaveChanges();
                 return user;
             }
