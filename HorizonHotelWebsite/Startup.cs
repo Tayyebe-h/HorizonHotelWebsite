@@ -12,6 +12,7 @@ using HorizonHotelWebsite.Data;
 using Microsoft.EntityFrameworkCore;
 using HorizonHotelWebsite.Models.Repositories;
 using Microsoft.AspNetCore.Identity;
+using HorizonHotelWebsite.Models.Entities.user;
 
 namespace HorizonHotelWebsite
 {
@@ -27,9 +28,8 @@ namespace HorizonHotelWebsite
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<DataBaseContext>();
+                       
 
-            
             services.AddScoped<IAdminBookingRepository, AdminBookingRepository>();
             services.AddScoped<IAdminRoomRepo, AdminRoomRepo>();
             services.AddScoped<IAdminUserRepository, AdminUserRepository>();
@@ -41,6 +41,12 @@ namespace HorizonHotelWebsite
                     options.UseSqlServer(Configuration.GetConnectionString("DataBaseContext")));
 
             services.AddControllersWithViews();
+
+            services.AddIdentity<User,Role>()
+               .AddEntityFrameworkStores<DataBaseContext>()
+               .AddDefaultTokenProviders();
+
+
 
             services.AddRazorPages();
         }

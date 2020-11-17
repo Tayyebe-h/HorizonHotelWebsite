@@ -13,9 +13,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace HorizonHotelWebsite.Data
 {
-    public class DataBaseContext: IdentityDbContext<IdentityUser>
+    public class DataBaseContext: IdentityDbContext<User,Role,int>
     {
-        public DataBaseContext(DbContextOptions options) : base(options)
+        public DataBaseContext(DbContextOptions<DataBaseContext> options) : base(options)
         {
         }
         public DbSet<User> ApplicationUsers { get; set; }

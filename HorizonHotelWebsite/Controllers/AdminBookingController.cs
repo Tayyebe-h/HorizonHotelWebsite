@@ -31,6 +31,7 @@ namespace HorizonHotelWebsite.Controllers
                 _bookingRepository.CreateBooking(booking);
                 return RedirectToAction("BookingComplete");
             }
+            //ViewBag.Errors = 
             return View(booking);
         }
 
