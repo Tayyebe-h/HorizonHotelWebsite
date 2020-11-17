@@ -23,7 +23,7 @@ namespace HorizonHotelWebsite.Controllers
         public IActionResult Index()
         {
             AdminUserViewModel adminUserViewModel = new AdminUserViewModel();
-            adminUserViewModel.Users = _adminUserRepository.AllUsers;
+            adminUserViewModel.ApplicationUsers = _adminUserRepository.AllUsers;
             return View(adminUserViewModel);
         }
 
@@ -55,6 +55,7 @@ namespace HorizonHotelWebsite.Controllers
             User user)
         {
             AdminUserViewModel adminUserViewModel = new AdminUserViewModel();
+
             if (ModelState.IsValid)
             {
                 _adminUserRepository.CreateUser(user);
@@ -71,6 +72,7 @@ namespace HorizonHotelWebsite.Controllers
             {
                 return NotFound();
             }
+
 
             var user = _adminUserRepository.GetById(id);
 

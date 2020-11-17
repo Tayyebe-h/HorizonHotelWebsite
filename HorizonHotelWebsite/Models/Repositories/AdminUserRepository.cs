@@ -21,7 +21,7 @@ namespace HorizonHotelWebsite.Models.Repositories
         {
             get
             {
-                return _dataBaseContext.Userss;
+                return _dataBaseContext.ApplicationUsers;
             }
         }
         public User GetById(int? id)
@@ -33,7 +33,7 @@ namespace HorizonHotelWebsite.Models.Repositories
         {
             if (user != null)
             {
-                _dataBaseContext.Userss.Add(user);
+                _dataBaseContext.ApplicationUsers.Add(user);
                 _dataBaseContext.SaveChanges();
                 return user;
             }
@@ -46,7 +46,7 @@ namespace HorizonHotelWebsite.Models.Repositories
 
             if (user != null)
             {
-                _dataBaseContext.Userss.Remove(user);
+                _dataBaseContext.ApplicationUsers.Remove(user);
                 _dataBaseContext.SaveChanges();
                 return user;
             }

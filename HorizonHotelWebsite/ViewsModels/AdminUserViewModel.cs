@@ -9,7 +9,7 @@ namespace HorizonHotelWebsite.ViewsModels
 {
     public class AdminUserViewModel
     {
-        public IEnumerable<User> Users { get; set; }
+        public IEnumerable<User> ApplicationUsers { get; set; }
         [Key]
         public int UserId { get; set; }
 
