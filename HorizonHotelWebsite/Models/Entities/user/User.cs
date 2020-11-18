@@ -18,7 +18,6 @@ namespace HorizonHotelWebsite.Models.Entities.user
 
     public class User:IdentityUser<int>
     {
-      
         [Display(Name = "First name")]
         [StringLength(50)]
         public string FirstName { get; set; }
@@ -27,7 +26,6 @@ namespace HorizonHotelWebsite.Models.Entities.user
         [StringLength(50)]
         public string LastName { get; set; }
         public RoleName Role { get; set; }
-        public ICollection<Booking> Bookings { get; set; }
-
-    }
+        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+        }
 }

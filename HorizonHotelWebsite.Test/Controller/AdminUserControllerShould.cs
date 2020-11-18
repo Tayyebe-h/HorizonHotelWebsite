@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using HorizonHotelWebsite.Controllers;
 using HorizonHotelWebsite.Models.Entities.user;
-using HorizonHotelWebsite.Models.Repositories;                  
+using HorizonHotelWebsite.Models.Repositories;
 using HorizonHotelWebsite.ViewsModels;
 using Microsoft.AspNetCore.Mvc;
 using Moq;
@@ -19,14 +19,14 @@ namespace HorizonHotelWebsite.Test.Controller
 
         private readonly User _validUser = new User
         {
-            UserId = 1, FirstName = "John", LastName = "Smith", Email = "john@smith.com", Phone = "0123456789",
-            Password = "12345Ss!", Role = RoleName.Customer
+            FirstName = "John", LastName = "Smith", Email = "john@smith.com",
+            Role = RoleName.Customer
         };
 
         private User _invalidUser = new User
         {
-            UserId = 2, FirstName = "", LastName = "", Email = "John3Smith,com", Phone = "0123456789",
-            Password = "12345Ss!", Role = RoleName.Customer
+            FirstName = "", LastName = "", Email = "John3Smith,com",
+            Role = RoleName.Customer
         };
 
         public AdminUserControllerShould()
@@ -62,19 +62,19 @@ namespace HorizonHotelWebsite.Test.Controller
         }
 
         [Fact]
-        public void ReturnViewWhenEditPostHasInvalidModelState()
+        public void ReturnNotFoundWhenEditPostHasInvalidModelState()
         {
             _sut.ModelState.AddModelError("x", "Test Error");
 
-            IActionResult result = _sut.Edit(_invalidUser.UserId, _invalidUser);
+            IActionResult notFoundActionResult = _sut.Edit(null, _invalidUser);
 
-            Assert.IsType<ViewResult>(result);
+            Assert.IsType<NotFoundResult>(notFoundActionResult);
         }
 
         [Fact]
         public void ReturnsViewWhenEditPostHasValidModelState()
         {
-            IActionResult result = _sut.Edit(_validUser.UserId, _validUser);
+            IActionResult result = _sut.Edit(0, _validUser);
 
             Assert.IsType<RedirectToActionResult>(result);
         }
@@ -82,7 +82,7 @@ namespace HorizonHotelWebsite.Test.Controller
         [Fact]
         public void ReturnsNotFoundWhenEditPostGetsInvalidId()
         {
-            IActionResult result = _sut.Edit(10, _validUser);
+            IActionResult result = _sut.Edit(null, _validUser);
 
             Assert.IsType<NotFoundResult>(result);
         }

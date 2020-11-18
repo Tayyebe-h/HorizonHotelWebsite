@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HorizonHotelWebsite.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20201114212614_InItIdentity2")]
-    partial class InItIdentity2
+    [Migration("20201117132311_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
