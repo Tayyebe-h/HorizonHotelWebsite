@@ -358,6 +358,7 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="ViewsModels\AccountViewModels\" />
   </ItemGroup>
 
 </Project>

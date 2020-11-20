@@ -1,0 +1,65 @@
+﻿@using Microsoft.EntityFrameworkCore.Internal
+@using HorizonHotelWebsite.ViewsModels
+@model HorizonHotelWebsite.Models.Entities.user.User
+
+@{
+    ViewData["Title"] = "Bookings";
+    //ViewData["ActivePage"] = ManageNavPages.Bookings;
+}
+
+<h1>User Bookings</h1>
+
+<p>
+    <a asp-action="Index">Show all users</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Room.RoomId)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckIn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckOut)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Bookings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.Room.RoomId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Room.RoomNumber)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckIn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CheckOut)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
