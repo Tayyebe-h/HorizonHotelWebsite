@@ -24,9 +24,9 @@ namespace HorizonHotelWebsite.ViewsModels
         [Required]
         public string ExpiryDate { get; set; }
 
-        [DisplayName("Cvv 3 Number")]
+        [DisplayName("Cvv3 Number")]
         [Required]
-        public string cvvCode { get; set; }
+        public string CvvCode { get; set; }
 
         public IEnumerable<Payment> Payments { get; set; }
 

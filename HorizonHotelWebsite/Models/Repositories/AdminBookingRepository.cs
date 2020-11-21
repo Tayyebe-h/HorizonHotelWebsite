@@ -24,16 +24,16 @@ namespace HorizonHotelWebsite.Models.Repositories
         {
             bool RoomExists = _dataBaseContext.Rooms.Any(R => R.RoomId == booking.Room.RoomId);
 
-            bool UserExists = _dataBaseContext.Userss.Any(U => U.Id == booking.User.Id);
-            
+            bool UserExists = _dataBaseContext.Userss.Any(U => U.Id == booking.UserId);
+
             if(!RoomExists)
                 throw new Exception($"Room with Id {booking.Room.RoomId} does not exist");
             else if(!UserExists)
-                throw new Exception($" User with Id {booking.User.Id} does not exist");
+                throw new Exception($" User with Id {booking.UserId} does not exist");
 
             else if (RoomExists && UserExists)
             {
-                booking.User= _dataBaseContext.Userss.Include(U => U.Bookings).SingleOrDefault(U => U.Id == booking.User.Id);
+                booking.User= _dataBaseContext.Userss.Include(U => U.Bookings).SingleOrDefault(U => U.Id == booking.UserId);
                 var bookable = CheckAvailability(booking);
                 if (bookable)
                 {
@@ -55,7 +55,7 @@ namespace HorizonHotelWebsite.Models.Repositories
 
                 foreach (Booking B in booking.Room.Bookings)
                 {
-                    if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn))
+                    if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn) && B.Paid == true)
                     {
                         Bookable = false;
                         break;
@@ -95,22 +95,22 @@ namespace HorizonHotelWebsite.Models.Repositories
         public void Update(Booking booking)
         {
             var room = _dataBaseContext.Rooms.Include(r => r.Bookings).SingleOrDefault(R => R.RoomId == booking.Room.RoomId);
-            
-            var user = _dataBaseContext.Userss.Include(r => r.Bookings).SingleOrDefault(U => U.Id == booking.User.Id);
-            
+
+            var user = _dataBaseContext.Userss.Include(r => r.Bookings).SingleOrDefault(U => U.Id == booking.UserId);
+
             var persistedBooking = _dataBaseContext.Bookings.SingleOrDefault(b => b.Id == booking.Id);
             if (room == null)
                 throw new Exception($"Room with Id {booking.Room.RoomId} does not exist");
             if (user == null)
-                throw new Exception($"User with Id {booking.User.Id} does not exist");
+                throw new Exception($"User with Id {booking.UserId} does not exist");
             if (persistedBooking == null)
-                throw new Exception($"Booking with Id {booking.User.Id} does not exist");
+                throw new Exception($"Booking with Id {booking.Id} does not exist");
             bool Bookable = true;
             if (room.Bookings != null)
             {
                 foreach (var B in room.Bookings)
                 {
-                    if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn) && (B.Id != booking.Id))
+                    if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn) && (B.Id != booking.Id) && B.Paid == true)
                     {
                         Bookable = false;
                         break;
@@ -124,6 +124,7 @@ namespace HorizonHotelWebsite.Models.Repositories
             persistedBooking.BookingPlaced = DateTime.Now;
             persistedBooking.CheckIn = booking.CheckIn;
             persistedBooking.CheckOut = booking.CheckOut;
+            persistedBooking.Paid = booking.Paid;
 
             _dataBaseContext.SaveChanges();
         }

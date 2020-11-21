@@ -19,9 +19,13 @@ namespace HorizonHotelWebsite.Models.Repositories
             _dataBaseContext = dataBaseContext;
 
         }
-        public void CreateBooking(Booking booking)
+        public decimal CreateBooking(Booking booking)
         {
             List<Room> SameTypeRooms = _dataBaseContext.Rooms.Where(R => R.Type == booking.Room.Type).Include(R => R.Bookings).ToList();
+            if(SameTypeRooms == null)
+            {
+                throw new Exception($"A room with type  {booking.Room.Type} does not exist!");
+            }
             List<Room> SelectedRooms = new List<Room>();
             bool Bookable = true;
             foreach(Room R in SameTypeRooms)
@@ -29,8 +33,8 @@ namespace HorizonHotelWebsite.Models.Repositories
                 if (R.Bookings != null)
                 {
                     foreach (Booking B in R.Bookings)
-                    {
-                        if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn))
+                    { 
+                        if (!(booking.CheckIn > B.CheckOut || booking.CheckOut < B.CheckIn) && B.Paid == true)
                         {
                             Bookable = false;
                             break;
@@ -50,17 +54,17 @@ namespace HorizonHotelWebsite.Models.Repositories
 
             if (!Bookable)
                 throw new Exception($"A room with type  {booking.Room.Type} in this time is not available.");
+
             booking.BookingPlaced = DateTime.Now;
-            booking.User.Role = "Customer";
-
-
             booking.Room = SelectedRooms.FirstOrDefault();
            _dataBaseContext.Bookings.Add(booking);
+           _dataBaseContext.SaveChanges();
 
-            //_dataBaseContext.Rooms.Update(booking.Room);
+            var bookedDays = (booking.CheckOut - booking.CheckIn).TotalDays;
+            var  bookedDaysDecimal = Convert.ToDecimal(bookedDays);
+            var totalPrice = bookedDaysDecimal * booking.Room.Price;
 
-            _dataBaseContext.SaveChanges();
-
+            return totalPrice;
 
         }
     }
