@@ -25,7 +25,7 @@ namespace HorizonHotelWebsite.Controllers
         public IActionResult Index()
         {
             AdminUserViewModel adminUserViewModel = new AdminUserViewModel();
-            adminUserViewModel.Users = _adminUserRepository.AllUsers;
+            adminUserViewModel.ApplicationUsers = _adminUserRepository.AllUsers;
             return View(adminUserViewModel);
         }
 
@@ -53,10 +53,11 @@ namespace HorizonHotelWebsite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("UserId, FirstName, LastName, Phone, Email, Role")]
+        public ActionResult Create([Bind("Id, FirstName, LastName, PhoneNumber, Email, Role")]
             User user)
         {
             AdminUserViewModel adminUserViewModel = new AdminUserViewModel();
+
             if (ModelState.IsValid)
             {
                 _adminUserRepository.CreateUser(user);
@@ -74,6 +75,7 @@ namespace HorizonHotelWebsite.Controllers
                 return NotFound();
             }
 
+
             var user = _adminUserRepository.GetById(id);
 
             if (user == null)
@@ -86,7 +88,9 @@ namespace HorizonHotelWebsite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id, [Bind("Id, FirstName, LastName, Phone, Email, Role")]
+
+        public ActionResult Edit(int? id, [Bind("Id, FirstName, LastName, PhoneNumber, Email, Role")]
+
             User user)
         {
             if (id != user.Id)
