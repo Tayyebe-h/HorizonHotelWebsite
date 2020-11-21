@@ -26,8 +26,8 @@ namespace HorizonHotelWebsite.Models.Entities.user
         [Display(Name = "Last name")]
         [StringLength(50)]
         public string LastName { get; set; }
-        public RoleName Role { get; set; }
-        public ICollection<Booking> Bookings { get; set; }
+        public String Role { get; set; }
+        public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
 
     }
 }

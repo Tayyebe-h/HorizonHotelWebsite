@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HorizonHotelWebsite.Migrations
 {
-    public partial class InItIdentity : Migration
+    public partial class initAuthorization : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,7 +44,7 @@ namespace HorizonHotelWebsite.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),
-                    Role = table.Column<int>(nullable: false)
+                    Role = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

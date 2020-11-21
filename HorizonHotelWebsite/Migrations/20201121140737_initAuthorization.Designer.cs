@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HorizonHotelWebsite.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20201114212614_InItIdentity2")]
-    partial class InItIdentity2
+    [Migration("20201121140737_initAuthorization")]
+    partial class initAuthorization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -187,8 +187,8 @@ namespace HorizonHotelWebsite.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
