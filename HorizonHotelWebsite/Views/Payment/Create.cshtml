@@ -2,12 +2,12 @@
 
 @{
     ViewData["Title"] = "Create";
-    //Layout = "~/Views/Shared/_AdministratorLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
 
-<h4>PaymentViewModel</h4>
+<h4>@ViewBag.BookingPaymentMessage</h4>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,20 +29,18 @@
                 <span asp-validation-for="ExpiryDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="cvvCode" class="control-label"></label>
-                <input asp-for="cvvCode" class="form-control" />
-                <span asp-validation-for="cvvCode" class="text-danger"></span>
+                <label asp-for="CvvCode" class="control-label"></label>
+                <input asp-for="CvvCode" class="form-control" />
+                <span asp-validation-for="CvvCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="submit" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

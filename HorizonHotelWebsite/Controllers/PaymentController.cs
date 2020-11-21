@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HorizonHotelWebsite.Models.Entities.booking;
 using HorizonHotelWebsite.Models.Entities.payment;
+using HorizonHotelWebsite.Models.Entities.user;
 using HorizonHotelWebsite.Models.Repositories;
 using HorizonHotelWebsite.ViewsModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HorizonHotelWebsite.Controllers
 {
     public class PaymentController : Controller
     {
+        private readonly UserManager<User> _userManager;
         private readonly IPayment _payment;
-        public PaymentController(IPayment payment)
+        public PaymentController(IPayment payment, UserManager<User> userManager)
         {
             _payment = payment;
+            _userManager = userManager;
         }
         // GET: PaymentController
+        [Authorize(Policy = "UserRole")]
         public IActionResult Index()
         {
             PaymentViewModel paymentViewModel = new PaymentViewModel();
@@ -26,6 +33,7 @@ namespace HorizonHotelWebsite.Controllers
         }
 
         // GET: PaymentController/Details/5
+        [Authorize(Policy = "UserRole")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -44,67 +52,38 @@ namespace HorizonHotelWebsite.Controllers
         }
 
         // GET: PaymentController/Create
+        [Authorize]
         public ActionResult Create()
         {
+            var price = TempData["TotalPrice"];
+            ViewBag.BookingPaymentMessage = $"To complete the booking process, you need to pay {price} kronor!";
             return View();
         }
 
         // POST: PaymentController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("PaymentId, CardNo, Name , ExpiryDate, cvvCode")]
+        public ActionResult Create([Bind("PaymentId, CardNo, Name , ExpiryDate, CvvCode")]
         Payment payment)
         {
+            
             PaymentViewModel paymentViewModel = new PaymentViewModel();
             if (ModelState.IsValid)
             {
+                var id = TempData["NewBookingID"];
+                payment.BookingId = Convert.ToInt32(id);
                 _payment.CreatePayment(payment);
-                return RedirectToAction("Index");
+                return RedirectToAction("BookingComplete");
             }
             return View(paymentViewModel);
 
         }
+        [Authorize]
+        public IActionResult BookingComplete()
+        {
+            ViewBag.BookingCompleteMessage = "Your booking is successfully added.";
+            return View();
+        }
 
-        //// GET: PaymentController/Edit/5
-        //public ActionResult Edit(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: PaymentController/Edit/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //// GET: PaymentController/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: PaymentController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }

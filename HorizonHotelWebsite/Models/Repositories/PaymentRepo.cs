@@ -1,6 +1,7 @@
 ﻿using HorizonHotelWebsite.Data;
 using HorizonHotelWebsite.Models.Entities.booking;
 using HorizonHotelWebsite.Models.Entities.payment;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,8 @@ namespace HorizonHotelWebsite.Models.Repositories
         {
             if(payment != null)
             {
+                 payment.Booking = _dataBaseContext.Bookings.Where(b => b.Id == payment.BookingId).FirstOrDefault();
+                 payment.Booking.Paid = true;
                 _dataBaseContext.Payments.Add(payment);
                 _dataBaseContext.SaveChanges();
                 return payment;

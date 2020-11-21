@@ -33,6 +33,7 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         [ScaffoldColumn(false)]
         [Display(Name = "Booking placed at")]
         public DateTime BookingPlaced { get; set; }
+        public bool Paid { get; set; }
       
 
     }
