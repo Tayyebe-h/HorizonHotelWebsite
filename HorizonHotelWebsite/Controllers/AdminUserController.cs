@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using HorizonHotelWebsite.Models.Entities.user;
 using HorizonHotelWebsite.Models.Repositories;
 using HorizonHotelWebsite.ViewsModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace HorizonHotelWebsite.Controllers
 {
+    [Authorize(Policy = "UserRole")]
     public class AdminUserController : Controller
     {
         private readonly IAdminUserRepository _adminUserRepository;
@@ -86,7 +88,9 @@ namespace HorizonHotelWebsite.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+
         public ActionResult Edit(int? id, [Bind("Id, FirstName, LastName, PhoneNumber, Email, Role")]
+
             User user)
         {
             if (id != user.Id)

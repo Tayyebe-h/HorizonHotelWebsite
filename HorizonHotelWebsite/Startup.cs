@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using HorizonHotelWebsite.Models.Repositories;
 using Microsoft.AspNetCore.Identity;
 using HorizonHotelWebsite.Models.Entities.user;
+using HorizonHotelWebsite.Helpers;
 
 namespace HorizonHotelWebsite
 {
@@ -46,8 +47,14 @@ namespace HorizonHotelWebsite
                .AddEntityFrameworkStores<DataBaseContext>()
                .AddDefaultTokenProviders();
 
-
-
+            services.AddScoped<IUserClaimsPrincipalFactory<User>, AddMyClaim>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("UserRole", policy =>
+                {
+                    policy.RequireClaim("UserRole","Admin","Operator");
+                });
+            });
             services.AddRazorPages();
         }
 
