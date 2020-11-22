@@ -18,16 +18,14 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         public int Id { get; set; }
         
         public virtual User User { get; set; }
-        [Required]
+        [Display(Name = "User Id")]
         public int UserId { get; set; }
        
         public virtual  Room Room { get; set; }
-        [Required]
+        [Display(Name = "Room Id")]
         public int RoomId { get; set; }
-        [Required]
         [DataType(DataType.Date)]
         public DateTime CheckIn { get; set; }
-        [Required]
         [BookingDateCheck]
         [DataType(DataType.Date)]
         public DateTime CheckOut { get; set; }
@@ -35,6 +33,8 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         [ScaffoldColumn(false)]
         [Display(Name = "Booking placed at")]
         public DateTime BookingPlaced { get; set; }
+        public bool Paid { get; set; }
+      
 
     }
 }

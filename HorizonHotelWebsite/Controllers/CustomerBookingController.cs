@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using HorizonHotelWebsite.Models.Entities.booking;
 using HorizonHotelWebsite.Models.Entities.user;
 using HorizonHotelWebsite.Models.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HorizonHotelWebsite.Controllers
-{
+{  
+    [Authorize]
     public class CustomerBookingController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -26,23 +28,22 @@ namespace HorizonHotelWebsite.Controllers
         [HttpPost]
         public IActionResult Index(Booking booking)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                booking.User = _userManager.GetUserAsync(User).Result;
-            }
+           
+            booking.User = _userManager.GetUserAsync(User).Result;
+            
             if (ModelState.IsValid)
             {
-                _bookingRepository.CreateBooking(booking);
-                return RedirectToAction("BookingComplete");
+                 booking.Paid = false;
+                var totoalPrice = _bookingRepository.CreateBooking(booking);
+                TempData["NewBookingID"] = booking.Id.ToString();
+                TempData["TotalPrice"] = totoalPrice.ToString();
+                return RedirectToAction("Create","Payment");
             }
             return View(booking);
         }
 
-        public IActionResult BookingComplete()
-        {
-            ViewBag.BookingCompleteMessage = "The booking is added.";
-            return View();
-        }
+       
+
 
 
 

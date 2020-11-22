@@ -1,4 +1,5 @@
-﻿using HorizonHotelWebsite.Models.Entities.room;
+﻿using HorizonHotelWebsite.Models.Entities.booking;
+using HorizonHotelWebsite.Models.Entities.room;
 using HorizonHotelWebsite.Models.Entities.user;
 using HorizonHotelWebsite.Models.Services.Attributes;
 using System;
@@ -24,9 +25,10 @@ namespace HorizonHotelWebsite.ViewsModels.BookingViewModels
         [DataType(DataType.Date)]
         public DateTime CheckIn { get; set; }
         [Required]
-        [BookingDateCheck]
         [DataType(DataType.Date)]
         public DateTime CheckOut { get; set; }
+
+        public IEnumerable<Booking> bookings { get; set; }
       
 
     }

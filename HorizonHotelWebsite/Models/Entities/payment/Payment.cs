@@ -1,4 +1,5 @@
-﻿using HorizonHotelWebsite.Models.Entities.user;
+﻿using HorizonHotelWebsite.Models.Entities.booking;
+using HorizonHotelWebsite.Models.Entities.user;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,10 +28,11 @@ namespace HorizonHotelWebsite.Models.Entities.payment
 
         [DisplayName("Cvv 3 Number")]
         [Required]
-        public string cvvCode { get; set; }
+        public string CvvCode { get; set; }
 
-        public virtual User User { get; set; }
-
+        public virtual Booking Booking { get; set; } 
+       
+        public int BookingId { get; set; }
 
     }
 }

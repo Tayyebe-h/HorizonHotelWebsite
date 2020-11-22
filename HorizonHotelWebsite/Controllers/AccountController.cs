@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HorizonHotelWebsite.Data;
 using HorizonHotelWebsite.Models.Entities.user;
 using HorizonHotelWebsite.ViewsModels;
 using Microsoft.AspNetCore.Identity;
@@ -12,13 +13,15 @@ namespace HorizonHotelWebsite.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly DataBaseContext _dataBaseContext;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        //private readonly ILogger
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, DataBaseContext dataBaseContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _dataBaseContext = dataBaseContext;
         }
 
         public IActionResult Index()
@@ -37,7 +40,16 @@ namespace HorizonHotelWebsite.Controllers
             {
                 return View(register);
             }
-
+            var Admin = _dataBaseContext.Userss.Where(u => u.Role == "Admin").SingleOrDefault();
+            string role;
+            if (Admin == null)
+            {
+                role = "Admin";
+            }
+            else
+            {
+                role = "Customer";
+            }
             User user = new User()
             {
                 FirstName = register.FirstName,
@@ -45,7 +57,7 @@ namespace HorizonHotelWebsite.Controllers
                 Email = register.Email,
                 PhoneNumber = register.PhoneNumber,
                 UserName = register.Email,
-                Role = RoleName.Customer,
+                Role = role,
 
             };
 
@@ -84,6 +96,10 @@ namespace HorizonHotelWebsite.Controllers
 
             var user = _userManager.FindByNameAsync(login.UserName).Result;
             _signInManager.SignOutAsync();
+            if(user == null)
+            {
+                throw new ApplicationException($"This user doesn't exist.");
+            }
             var result =_signInManager.PasswordSignInAsync(user, login.Password, login.IsPersistent, true).Result;
             if(result.Succeeded == true)
             {

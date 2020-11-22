@@ -8,6 +8,6 @@ namespace HorizonHotelWebsite.Models.Repositories
 {
     public interface ICustomerBookingRepository
     {
-        void CreateBooking(Booking booking);
+        decimal CreateBooking(Booking booking);
     }
 }

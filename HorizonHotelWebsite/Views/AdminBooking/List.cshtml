@@ -7,9 +7,7 @@
 
 <h1>Booking List</h1>
 
-<@*p>
-    <a asp-action="Create">Create New</a>
-</p>*@
+<
 <table class="table">
     <thead>
         <tr>
@@ -17,7 +15,7 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.User.Id)
+                @Html.DisplayNameFor(model => model.UserId)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Room.RoomId)
@@ -27,6 +25,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CheckOut)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Paid)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BookingPlaced)
@@ -41,7 +42,7 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.UserId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Room.RoomId)
@@ -51,6 +52,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paid)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.BookingPlaced)

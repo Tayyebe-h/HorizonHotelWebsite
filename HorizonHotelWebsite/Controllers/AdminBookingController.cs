@@ -4,11 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using HorizonHotelWebsite.Models.Entities.booking;
 using HorizonHotelWebsite.Models.Repositories;
+using HorizonHotelWebsite.ViewsModels.BookingViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace HorizonHotelWebsite.Controllers
 {
+    [Authorize(Policy ="UserRole")]
     public class AdminBookingController : Controller
     {
         private readonly IAdminBookingRepository _bookingRepository;
@@ -23,15 +26,24 @@ namespace HorizonHotelWebsite.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Index(Booking booking)
+        public IActionResult Index(AdminBookingViewModel booking)
         {
-            
+
             if (ModelState.IsValid)
             {
-                _bookingRepository.CreateBooking(booking);
+                Booking newBooking = new Booking
+                {
+                    Room = booking.Room,
+                    RoomId = booking.RoomId,
+                    User = booking.User,
+                    UserId = booking.UserId,
+                    CheckIn= booking.CheckIn,
+                    CheckOut= booking.CheckOut,
+                };
+                _bookingRepository.CreateBooking(newBooking);
                 return RedirectToAction("BookingComplete");
             }
-            //ViewBag.Errors = 
+          
             return View(booking);
         }
 
@@ -43,7 +55,10 @@ namespace HorizonHotelWebsite.Controllers
 
         public IActionResult List()
         {
-            return View(_bookingRepository.GetAll());
+            AdminBookingViewModel newBooking = new AdminBookingViewModel();
+            newBooking.bookings = _bookingRepository.GetAll();
+                 
+            return View(newBooking.bookings);
         }
 
         public ActionResult Details(int? id)

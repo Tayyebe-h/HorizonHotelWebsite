@@ -18,7 +18,7 @@ namespace HorizonHotelWebsite.Models.Services.Attributes
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var booking = (Booking) validationContext.ObjectInstance;
+            var booking = (Booking)validationContext.ObjectInstance;
 
             if (booking.CheckIn >= booking.CheckOut || booking.CheckIn < DateTime.Today)
             {
