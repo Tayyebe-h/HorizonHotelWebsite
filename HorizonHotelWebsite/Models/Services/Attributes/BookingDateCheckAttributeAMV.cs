@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using HorizonHotelWebsite.Models.Entities.booking;
+using HorizonHotelWebsite.ViewsModels.BookingViewModels;
 
 namespace HorizonHotelWebsite.Models.Services.Attributes
 {
-    
-    public class BookingDateCheckAttribute : ValidationAttribute
+    //[AttributeUsage(AttributeTargets.Property)]
+    public class BookingDateCheckAttributeAMV : ValidationAttribute
     {
-        public BookingDateCheckAttribute()
+        public BookingDateCheckAttributeAMV()
         {
         }
 
@@ -18,7 +18,7 @@ namespace HorizonHotelWebsite.Models.Services.Attributes
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            var booking = (Booking)validationContext.ObjectInstance;
+            var booking = (AdminBookingViewModel)validationContext.ObjectInstance;
 
             if (booking.CheckIn >= booking.CheckOut || booking.CheckIn < DateTime.Today)
             {

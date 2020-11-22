@@ -26,10 +26,10 @@ namespace HorizonHotelWebsite.Models.Repositories
             bool UserExists = _dataBaseContext.Userss.Any(U => U.Id == booking.UserId);
             if(!RoomExists)
                 throw new Exception($"Room with Id {booking.Room.RoomId} does not exist");
-            else if(!UserExists)
+            if(!UserExists)
                 throw new Exception($" User with Id {booking.UserId} does not exist");
 
-            else if (RoomExists && UserExists)
+            if (RoomExists && UserExists)
             {
                 booking.User= _dataBaseContext.Userss.Include(U => U.Bookings).SingleOrDefault(U => U.Id == booking.UserId);
                 var bookable = CheckAvailability(booking);
