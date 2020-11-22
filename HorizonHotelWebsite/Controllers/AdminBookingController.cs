@@ -39,6 +39,7 @@ namespace HorizonHotelWebsite.Controllers
                     UserId = booking.UserId,
                     CheckIn= booking.CheckIn,
                     CheckOut= booking.CheckOut,
+                    Paid= booking.Paid,
                 };
                 _bookingRepository.CreateBooking(newBooking);
                 return RedirectToAction("BookingComplete");
@@ -55,10 +56,8 @@ namespace HorizonHotelWebsite.Controllers
 
         public IActionResult List()
         {
-            AdminBookingViewModel newBooking = new AdminBookingViewModel();
-            newBooking.bookings = _bookingRepository.GetAll();
-                 
-            return View(newBooking.bookings);
+                             
+            return View(_bookingRepository.GetAll());
         }
 
         public ActionResult Details(int? id)
