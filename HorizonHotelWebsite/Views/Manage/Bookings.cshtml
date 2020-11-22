@@ -18,15 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Room.RoomId)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckIn)
             </th>
@@ -44,12 +38,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Id)
                 </td>
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.Room.RoomId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Room.RoomNumber)
-                </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.User.Email)
                 </td>

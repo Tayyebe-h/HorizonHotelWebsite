@@ -20,21 +20,20 @@ namespace HorizonHotelWebsite.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly DataBaseContext _dataBaseContext;
         private readonly ILogger _logger;
-        private readonly IAdminBookingRepository _adminBookingRepository;
-
+        private readonly IAdminUserRepository _adminUserRepository;
 
 
         public ManageController(UserManager<User> userManager,
             SignInManager<User> signInManager,
             DataBaseContext dataBaseContext,
             ILogger<ManageController> logger,
-            IAdminBookingRepository adminBookingRepository)
+            IAdminUserRepository adminUserRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _dataBaseContext = dataBaseContext;
             _logger = logger;
-            _adminBookingRepository = adminBookingRepository;
+            _adminUserRepository = adminUserRepository;
         }
 
 
@@ -188,25 +187,10 @@ namespace HorizonHotelWebsite.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> Bookings()
+        public async Task<ActionResult> Bookings()
         {
-
-            //var user = _adminUserRepository.GetById(id);
-            //return View(user);
-            var user = await _userManager.GetUserAsync(User);
-            var booking = _dataBaseContext.Bookings.Where(s => s.Id == user.Id).SingleOrDefault();
-
-            var model = new BookingViewModel
-            {
-                Id = booking.Id,
-                Email = user.Email,
-                CheckIn = booking.CheckIn,
-                CheckOut = booking.CheckOut
-            };
-
-            //var  = _dataBaseContext.Bookings.(u => u.Id == id);
-
-
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            user = _adminUserRepository.GetById(user.Id);
             return View(user);
         }
 
