@@ -11,13 +11,13 @@ namespace HorizonHotelWebsite.Test.Model
         private User _validUser = new User
         {
             FirstName = "John", LastName = "Smith", Email = "john@smith.com",
-            Role = RoleName.Customer
+            Role = "Customer"
         };
 
         private User _invalidUser = new User
         {
             FirstName = "", LastName = "", Email = "John3Smith,com",
-            Role = RoleName.Customer
+            Role = "Customer"
         };
 
         [Fact]
