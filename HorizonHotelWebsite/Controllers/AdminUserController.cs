@@ -12,6 +12,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Moq;
 
 namespace HorizonHotelWebsite.Controllers
 {
@@ -22,12 +24,15 @@ namespace HorizonHotelWebsite.Controllers
         private readonly UserManager<User> _userManager;
         private readonly DataBaseContext _dataBaseContext;
 
+        
+
+
+
         public AdminUserController(IAdminUserRepository adminUserRepository, UserManager<User> userManager, DataBaseContext dataBaseContext)
         {
             _adminUserRepository = adminUserRepository;
             _userManager = userManager;
             _dataBaseContext = dataBaseContext;
-
         }
 
         public IActionResult Index()
@@ -109,6 +114,11 @@ namespace HorizonHotelWebsite.Controllers
         {
             var _id = id.ToString();
             var user = _userManager.FindByIdAsync(_id).Result;
+
+            if (user == null)
+            {
+                return NotFound();
+            }
             AdminUserEditViewModel userEdit = new AdminUserEditViewModel()
             {
                 Id = user.Id,
