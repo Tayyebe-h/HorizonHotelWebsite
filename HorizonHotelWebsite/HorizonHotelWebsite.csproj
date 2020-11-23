@@ -6,12 +6,16 @@
 
   <ItemGroup>
     <Compile Remove="Models\Services\Interfaces\**" />
+    <Compile Remove="ViewsModels\AccountViewModels\**" />
     <Compile Remove="Views\Rooms\**" />
     <Content Remove="Models\Services\Interfaces\**" />
+    <Content Remove="ViewsModels\AccountViewModels\**" />
     <Content Remove="Views\Rooms\**" />
     <EmbeddedResource Remove="Models\Services\Interfaces\**" />
+    <EmbeddedResource Remove="ViewsModels\AccountViewModels\**" />
     <EmbeddedResource Remove="Views\Rooms\**" />
     <None Remove="Models\Services\Interfaces\**" />
+    <None Remove="ViewsModels\AccountViewModels\**" />
     <None Remove="Views\Rooms\**" />
   </ItemGroup>
 
@@ -354,10 +358,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="Moq" Version="4.14.7" />
     <PackageReference Include="Xunit" Version="2.4.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewsModels\AccountViewModels\" />
   </ItemGroup>
 
 </Project>
