@@ -32,9 +32,19 @@ namespace HorizonHotelWebsite.Controllers
 
         public IActionResult Index()
         {
-            AdminUserViewModel adminUserViewModel = new AdminUserViewModel();
-            adminUserViewModel.Users = _adminUserRepository.AllUsers;
-            return View(adminUserViewModel);
+            var users = _userManager.Users
+                .Select(u => new AdminUserViewModel
+                {
+                    UserId = u.Id,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName,
+                    UserName = u.UserName,
+                    PhoneNumber = u.PhoneNumber,
+                    EmailConfirmed = u.EmailConfirmed,
+                    Role = u.Role,
+
+                }).ToList();
+            return View(users);
         }
 
         public ActionResult Details(int? id)
