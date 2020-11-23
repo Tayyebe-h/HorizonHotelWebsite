@@ -5,11 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using HorizonHotelWebsite.Models.Entities.user;
 
-namespace HorizonHotelWebsite.ViewsModels
+namespace HorizonHotelWebsite.ViewsModels.UserManagerViewModels
 {
     public class AdminUserViewModel
     {
-        public IEnumerable<User> ApplicationUsers { get; set; }
+        //public IEnumerable<User> Users { get; set; }
         [Key]
         public int UserId { get; set; }
 
@@ -17,14 +17,14 @@ namespace HorizonHotelWebsite.ViewsModels
 
         public string LastName { get; set; }
 
-        public string Phone { get; set; }
+        public string PhoneNumber { get; set; }
+        [Display(Name = "Email")]
+        public string UserName { get; set; }
 
-        public string Email { get; set; }
+            
+        public bool EmailConfirmed { get; set; }
 
-        //Left this out for now but we can discuss how to work with this later.
-        //public string Password { get; set; }
-
-        public RoleName Role { get; set; }
+         public string Role { get; set; }
 
         
     }

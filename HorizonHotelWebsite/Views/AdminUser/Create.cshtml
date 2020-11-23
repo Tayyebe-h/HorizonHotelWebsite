@@ -1,4 +1,4 @@
-﻿@model HorizonHotelWebsite.ViewsModels.AdminUserViewModel
+﻿@model HorizonHotelWebsite.ViewsModels.UserManagerViewModels.AdminUserCreateViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -9,6 +9,12 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        @if (TempData["Message"] != null)
+        {
+            <div class="alert alert-danger">
+                <text>@TempData["Message"]</text>
+            </div>
+        }
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -24,9 +30,9 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -35,13 +41,29 @@
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
 
+            @*<div class="form-group">
+                    <label asp-for="Role" class="control-label"></label>
+                    <select asp-for="Role" asp-items="Html.GetEnumSelectList<HorizonHotelWebsite.Models.Entities.user.RoleName>()" class="form-control">
+                        <option value="">Choose a user role.</option>
+                    </select>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>*@
             <div class="form-group">
                 <label asp-for="Role" class="control-label"></label>
-                <select asp-for="Role" asp-items="Html.GetEnumSelectList<HorizonHotelWebsite.Models.Entities.user.RoleName>()" class="form-control">
-                    <option value="">Choose a user role.</option>
-                </select>
+                <input asp-for="Role" class="form-control" />
                 <span asp-validation-for="Role" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
 
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -53,3 +75,5 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+
+

@@ -76,6 +76,11 @@ namespace HorizonHotelWebsite.Controllers
             return View(register);
             
         }
+        public IActionResult UserRegisted()
+        {
+            ViewBag.UserCreatedMessage = "You are successfully registered.";
+            return View();
+        }
 
         [HttpGet]
         public IActionResult Login(string returnUrl="/")
