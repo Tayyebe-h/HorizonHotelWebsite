@@ -7,6 +7,7 @@ using HorizonHotelWebsite.Models.Entities.user;
 using HorizonHotelWebsite.ViewsModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace HorizonHotelWebsite.Controllers
 {
@@ -15,6 +16,7 @@ namespace HorizonHotelWebsite.Controllers
         private readonly DataBaseContext _dataBaseContext;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, DataBaseContext dataBaseContext)
         {
             _userManager = userManager;
@@ -114,6 +116,7 @@ namespace HorizonHotelWebsite.Controllers
         public IActionResult Logout()
         {
             _signInManager.SignOutAsync();
+            //_logger.LogInformation("User logged out.");
             return RedirectToAction("Index", "Home");
         }
     }

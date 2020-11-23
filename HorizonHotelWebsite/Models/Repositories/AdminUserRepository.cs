@@ -68,16 +68,30 @@ namespace HorizonHotelWebsite.Models.Repositories
             return user;
         }
 
-        public User UpdateWithUser(User user)
+        public User CopyUserValues(User model, User user)
         {
-            if (user != null)
-            {
-                _dataBaseContext.Update(user);
-                _dataBaseContext.SaveChanges();
-                return user;
-            }
+            user.FirstName = model.FirstName;
+            user.LastName = model.LastName;
+            user.Role = model.Role;
+            user.PhoneNumber = model.PhoneNumber;
+            user.Bookings = model.Bookings;
 
             return user;
+        }
+
+        public User UpdateWithUser(User model)
+        {
+            if (model != null)
+            {
+                var user = _dataBaseContext.Userss.FirstOrDefault(u => u.Id == model.Id);
+                CopyUserValues(model, user);
+
+                _dataBaseContext.Userss.Update(user);
+                _dataBaseContext.SaveChanges();
+                return model;
+            }
+
+            return model;
         }
     }
 }
