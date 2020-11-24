@@ -40,7 +40,7 @@ namespace HorizonHotelWebsite.Controllers
             {
                 return View(register);
             }
-            var Admin = _dataBaseContext.Userss.Where(u => u.Role == "Admin").SingleOrDefault();
+            var Admin = _dataBaseContext.Userss.Where(u => u.Role == "Admin").FirstOrDefault();
             string role;
             if (Admin == null)
             {
@@ -61,10 +61,11 @@ namespace HorizonHotelWebsite.Controllers
 
             };
 
-           var result = _userManager.CreateAsync(user, register.Password).Result;
+           
+            var result = _userManager.CreateAsync(user, register.Password).Result;
             if (result.Succeeded)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("UserRegisted");
             }
 
             string message = "";
@@ -83,7 +84,7 @@ namespace HorizonHotelWebsite.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login(string returnUrl="/")
+        public IActionResult Login(string returnUrl = "/")
         {
             return View(new LoginViewModel
             {
@@ -101,23 +102,27 @@ namespace HorizonHotelWebsite.Controllers
 
             var user = _userManager.FindByNameAsync(login.UserName).Result;
             _signInManager.SignOutAsync();
-            if(user == null)
+            if (user == null)
             {
-                throw new ApplicationException($"This user doesn't exist.");
+                ViewBag.message = "This email is not registered in our database.";
+                return View(login);
             }
-            var result =_signInManager.PasswordSignInAsync(user, login.Password, login.IsPersistent, true).Result;
-            if(result.Succeeded == true)
+            var result = _signInManager.PasswordSignInAsync(user, login.Password, login.IsPersistent, true).Result;
+            if (result.Succeeded == true)
             {
                 return Redirect(login.ReturnUrl);
             }
-            ModelState.AddModelError(string.Empty, "Login Error");
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+
+
             return View();
         }
+
+
         public IActionResult Logout()
         {
             _signInManager.SignOutAsync();
-            //_logger.LogInformation("User logged out.");
-            return RedirectToAction("Index", "Home");
+             return RedirectToAction("Index", "Home");
         }
     }
 
