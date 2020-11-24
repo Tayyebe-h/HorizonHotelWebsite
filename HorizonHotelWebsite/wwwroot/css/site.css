@@ -32,29 +32,28 @@ html, body {
     top: 50%;
     transform: translateY(-50%);
 }
+.carousel-caption h1 {
+    font-size: 500%;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 15px #000;
+}
 
-    .carousel-caption h1 {
-        font-size: 500%;
-        text-transform: uppercase;
-        text-shadow: 1px 1px 15px #000;
-    }
-
-    .carousel-caption h3 {
-        font-size: 200%;
-        font-weight: 500;
-        text-shadow: 1px 1px 10px #000;
-        padding-bottom: 1rem;
-    }
+.carousel-caption h3 {
+    font-size: 200%;
+    font-weight: 500;
+    text-shadow: 1px 1px 10px #000;
+    padding-bottom: 1rem;
+}
 
 .btn-primary {
     background-color: #8b6008;
     border: 1px solid #8b6008;
 }
 
-    .btn-primary:hover {
-        background-color: saddlebrown;
-        border: 1px solid saddlebrown;
-    }
+.btn-primary:hover {
+    background-color: saddlebrown;
+    border: 1px solid saddlebrown;
+}
 
 .jumbotron {
     padding: 1rem;
@@ -71,12 +70,12 @@ html, body {
     padding-top: 2rem;
 }
 
-    .welcome hr {
-        border-top: 2px solid #b4b4b4;
-        width: 95%;
-        margin-top: .3rem;
-        margin-bottom: 1rem;
-    }
+.welcome hr {
+    border-top: 2px solid #b4b4b4;
+    width: 95%;
+    margin-top: .3rem;
+    margin-bottom: 1rem;
+}
 
 .social a {
     font-size: 4.5em;
@@ -99,12 +98,12 @@ html, body {
     color: #a151a4;
 }
 
-    .fa-facebook:hover,
-    .fa-google-plus-g:hover,
-    .fa-instagra:hover,
-    .fa-twitter:hover {
-        color: #d5d5d5;
-    }
+.fa-facebook:hover,
+.fa-google-plus-g:hover,
+.fa-instagra:hover,
+.fa-twitter:hover {
+     color: #d5d5d5;
+}
 
 footer {
     background-color: #3f3f3f;
@@ -144,20 +143,20 @@ hr.light-100 {
         top: 45%;
     }
 
-        .carousel-caption h1 {
-            font-size: 350%;
-        }
+    .carousel-caption h1 {
+        font-size: 350%;
+    }
 
-        .carousel-caption h3 {
-            font-size: 140%;
-            font-weight: 400;
-            padding-bottom: .2rem;
-        }
+    .carousel-caption h3 {
+        font-size: 140%;
+        font-weight: 400;
+        padding-bottom: .2rem;
+    }
 
-        .carousel-caption .btn {
-            font-size: 95%;
-            padding: 8px 14px;
-        }
+    .carousel-caption .btn {
+        font-size: 95%;
+        padding: 8px 14px;
+    }
 
     .display-4 {
         font-size: 200%;
@@ -174,18 +173,18 @@ hr.light-100 {
         top: 40%;
     }
 
-        .carousel-caption h1 {
-            font-size: 250%;
-        }
+    .carousel-caption h1 {
+        font-size: 250%;
+    }
 
-        .carousel-caption h3 {
-            font-size: 110%;
-        }
+    .carousel-caption h3 {
+        font-size: 110%;
+    }
 
-        .carousel-caption .btn {
-            font-size: 90%;
-            padding: 4px 8px;
-        }
+    .carousel-caption .btn {
+        font-size: 90%;
+        padding: 4px 8px;
+    }
 
     .carousel-indicators {
         display: none;

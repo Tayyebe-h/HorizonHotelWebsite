@@ -128,6 +128,5 @@ namespace HorizonHotelWebsite.Models.Repositories
 
             _dataBaseContext.SaveChanges();
         }
-
     }
 }

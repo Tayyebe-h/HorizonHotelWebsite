@@ -31,6 +31,5 @@ namespace HorizonHotelWebsite.ViewsModels.ManagesViewModels
         [BookingDateCheck]
         [DataType(DataType.Date)]
         public DateTime CheckOut { get; set; }
-
     }
 }

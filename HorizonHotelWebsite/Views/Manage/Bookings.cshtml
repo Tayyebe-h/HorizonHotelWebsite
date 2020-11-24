@@ -4,14 +4,12 @@
 
 @{
     ViewData["Title"] = "Bookings";
-    //ViewData["ActivePage"] = ManageNavPages.Bookings;
+    ViewData["ActivePage"] = ManageNavPages.Bookings;
 }
 
-<h1>User Bookings</h1>
+<h1>Booking List</h1>
 
-<p>
-    <a asp-action="Index">Show all users</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -34,20 +32,23 @@
     <tbody>
         @foreach (var item in Model.Bookings)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.User.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckIn)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CheckOut)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckIn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+            <td>
+                <a asp-action="CancelBookings" asp-route-id="@item.Id">Cancel</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

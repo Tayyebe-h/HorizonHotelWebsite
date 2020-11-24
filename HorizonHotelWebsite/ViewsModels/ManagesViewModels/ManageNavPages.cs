@@ -12,7 +12,7 @@ namespace HorizonHotelWebsite.ViewsModels
 
         public static string ChangePassword => "ChangePassword";
 
-       // public static string Bookings => "Bookings";
+        public static string Bookings => "Bookings";
 
 
 
@@ -20,7 +20,7 @@ namespace HorizonHotelWebsite.ViewsModels
 
         public static string ChangePasswordNavClass(ViewContext viewContext) => PageNavClass(viewContext, ChangePassword);
 
-        //public static string BookingsNavClass(ViewContext viewContext) => PageNavClass(viewContext, Bookings);
+        public static string BookingsNavClass(ViewContext viewContext) => PageNavClass(viewContext, Bookings);
 
 
         private static string PageNavClass(ViewContext viewContext, string page)
