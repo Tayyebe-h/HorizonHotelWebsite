@@ -7,48 +7,45 @@
 
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
+
             <th>
                 @Html.DisplayNameFor(model => model.PaymentId)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingId)
+            </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.CardNo)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpiryDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CvvCode)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model.Payments) {
         <tr>
+
             <td>
                 @Html.DisplayFor(modelItem => item.PaymentId)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingId)
+            </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.CardNo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpiryDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CvvCode)
-            </td>
+
             <td>
                 <a asp-action="Details" asp-route-id="@item.PaymentId">Details</a>
             </td>
