@@ -9,6 +9,8 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
+        <h5>@ViewBag.message</h5>
+
 
         <form asp-action="Login">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -30,7 +32,7 @@
                 <input asp-for="IsPersistent" class="form-control" />
                 <span asp-validation-for="IsPersistent" class="text-danger"></span>
             </div>
-            <input asp-for="ReturnUrl" type ="hidden" class="form-control" />
+            <input asp-for="ReturnUrl" type="hidden" class="form-control" />
 
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-primary" />
@@ -40,7 +42,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="index" asp-controller="Home">Back to Home Page</a>
 </div>
 
 @section Scripts {
