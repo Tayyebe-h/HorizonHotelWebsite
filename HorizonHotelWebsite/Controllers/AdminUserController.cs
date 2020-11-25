@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Moq;
 
 namespace HorizonHotelWebsite.Controllers
@@ -72,7 +73,19 @@ namespace HorizonHotelWebsite.Controllers
        
         public IActionResult Create()
         {
-            return View();
+            AdminUserCreateViewModel model = new AdminUserCreateViewModel()
+            {
+                Roles = new System.Collections.Generic.List<SelectListItem>()
+                {
+                     new SelectListItem {Value ="Admin", Text ="Admin"},
+                    new SelectListItem {Value ="Operator", Text ="Operator"},
+                    new SelectListItem {Value ="Customer", Text ="Customer"},
+                }
+            };
+
+
+
+            return View(model);
         }
         [HttpPost]
         public IActionResult Create(AdminUserCreateViewModel adminUserCreateView)

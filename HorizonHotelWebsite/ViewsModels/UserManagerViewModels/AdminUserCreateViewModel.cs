@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace HorizonHotelWebsite.ViewsModels.UserManagerViewModels
         public string PhoneNumber { get; set; }
         [Required]
         public string Role { get; set; }
+        public List<SelectListItem> Roles { get; set; }
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
