@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HorizonHotelWebsite.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20201120163129_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20201123145551_inttt")]
+    partial class inttt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -37,6 +37,9 @@ namespace HorizonHotelWebsite.Migrations
                     b.Property<DateTime>("CheckOut")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("Paid")
+                        .HasColumnType("bit");
+
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
 
@@ -59,7 +62,14 @@ namespace HorizonHotelWebsite.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("BookingId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CardNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CvvCode")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -71,16 +81,9 @@ namespace HorizonHotelWebsite.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("cvvCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("PaymentId");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("BookingId");
 
                     b.ToTable("Payments");
                 });
@@ -187,8 +190,8 @@ namespace HorizonHotelWebsite.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -331,9 +334,11 @@ namespace HorizonHotelWebsite.Migrations
 
             modelBuilder.Entity("HorizonHotelWebsite.Models.Entities.payment.Payment", b =>
                 {
-                    b.HasOne("HorizonHotelWebsite.Models.Entities.user.User", "User")
+                    b.HasOne("HorizonHotelWebsite.Models.Entities.booking.Booking", "Booking")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("BookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

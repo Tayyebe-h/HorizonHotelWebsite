@@ -20,5 +20,6 @@ namespace HorizonHotelWebsite.Models.Entities.user
         public string LastName { get; set; }
         public String Role { get; set; }
         public ICollection<Booking> Bookings { get; set; } = new List<Booking>();
+
     }
 }

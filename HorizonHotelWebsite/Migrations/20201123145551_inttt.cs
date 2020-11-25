@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HorizonHotelWebsite.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class inttt : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,7 +44,7 @@ namespace HorizonHotelWebsite.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     FirstName = table.Column<string>(maxLength: 50, nullable: true),
                     LastName = table.Column<string>(maxLength: 50, nullable: true),
-                    Role = table.Column<int>(nullable: false)
+                    Role = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -173,29 +173,6 @@ namespace HorizonHotelWebsite.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Payments",
-                columns: table => new
-                {
-                    PaymentId = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CardNo = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: false),
-                    ExpiryDate = table.Column<string>(nullable: false),
-                    cvvCode = table.Column<string>(nullable: false),
-                    UserId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Payments", x => x.PaymentId);
-                    table.ForeignKey(
-                        name: "FK_Payments_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Bookings",
                 columns: table => new
                 {
@@ -205,7 +182,8 @@ namespace HorizonHotelWebsite.Migrations
                     RoomId = table.Column<int>(nullable: false),
                     CheckIn = table.Column<DateTime>(nullable: false),
                     CheckOut = table.Column<DateTime>(nullable: false),
-                    BookingPlaced = table.Column<DateTime>(nullable: false)
+                    BookingPlaced = table.Column<DateTime>(nullable: false),
+                    Paid = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -220,6 +198,29 @@ namespace HorizonHotelWebsite.Migrations
                         name: "FK_Bookings_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    PaymentId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CardNo = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    ExpiryDate = table.Column<string>(nullable: false),
+                    CvvCode = table.Column<string>(nullable: false),
+                    BookingId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.PaymentId);
+                    table.ForeignKey(
+                        name: "FK_Payments_Bookings_BookingId",
+                        column: x => x.BookingId,
+                        principalTable: "Bookings",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -274,9 +275,9 @@ namespace HorizonHotelWebsite.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payments_UserId",
+                name: "IX_Payments_BookingId",
                 table: "Payments",
-                column: "UserId");
+                column: "BookingId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -297,13 +298,13 @@ namespace HorizonHotelWebsite.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Bookings");
-
-            migrationBuilder.DropTable(
                 name: "Payments");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "Bookings");
 
             migrationBuilder.DropTable(
                 name: "Rooms");

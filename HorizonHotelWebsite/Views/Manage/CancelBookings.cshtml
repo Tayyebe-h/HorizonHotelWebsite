@@ -1,0 +1,44 @@
+﻿@model HorizonHotelWebsite.Models.Entities.user.User
+
+@{
+    ViewData["Title"] = "CancelBookings";
+}
+
+<h1>Cancel Booking</h1>
+
+<h3>Are you sure you want to Cancel this ?</h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckIn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bookings.ElementAtOrDefault(0).CheckIn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bookings.ElementAtOrDefault(0).CheckOut)
+        </dd>
+    </dl>
+
+    <form asp-action="CancelBookings">
+        <input type="submit" value="Cancel" class="btn btn-danger" /> |
+        <a asp-action="Bookings">Back to List</a>
+    </form>
+</div>
