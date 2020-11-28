@@ -25,6 +25,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).CheckOut)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bookings.ElementAtOrDefault(0).Paid)
+            </th>
 
             <th></th>
         </tr>
@@ -44,6 +47,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheckOut)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Paid)
             </td>
             <td>
                 <a asp-action="CancelBookings" asp-route-id="@item.Id">Cancel</a>
