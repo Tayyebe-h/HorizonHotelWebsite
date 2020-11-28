@@ -36,7 +36,11 @@
             @Html.DisplayFor(model => model.Bookings.ElementAtOrDefault(0).CheckOut)
         </dd>
     </dl>
+    <h4>
+        Please contact our customer service department before cancelling to arrange refunds.
+    </h4>
 
+    <hr />
     <form asp-action="CancelBookings">
         <input type="submit" value="Cancel" class="btn btn-danger" /> |
         <a asp-action="Bookings">Back to List</a>
