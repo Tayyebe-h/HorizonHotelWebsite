@@ -20,18 +20,19 @@ namespace HorizonHotelWebsite.Models.Entities.booking
         public virtual User User { get; set; }
         [Display(Name = "User Id")]
         public int UserId { get; set; }
-       
         public virtual  Room Room { get; set; }
         [Display(Name = "Room Id")]
         public int RoomId { get; set; }
+        [Display(Name = "Check In")]
         [DataType(DataType.Date)]
         public DateTime CheckIn { get; set; }
+        [Display(Name = "Check Out")]
         [BookingDateCheck]
         [DataType(DataType.Date)]
         public DateTime CheckOut { get; set; }
         [BindNever]
         [ScaffoldColumn(false)]
-        [Display(Name = "Booking placed at")]
+        [Display(Name = "Booking placed on")]
         public DateTime BookingPlaced { get; set; }
         public bool Paid { get; set; }
       

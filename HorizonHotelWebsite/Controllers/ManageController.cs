@@ -260,6 +260,8 @@ namespace HorizonHotelWebsite.Controllers
             return RedirectToAction(nameof(Bookings));
         }
 
+
+
         #endregion
 
         #region AddErrors
