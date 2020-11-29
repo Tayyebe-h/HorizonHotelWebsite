@@ -11,17 +11,20 @@ namespace HorizonHotelWebsite.Models.Entities.room
 {
     public enum RoomType
     {
+        [Display(Name = "Single Room")]
         SingleRoom,
+        [Display(Name = "Double Room")]
         DoubleRoom,
+        [Display(Name = "Twin Room")]
         TwinRoom,
+        [Display(Name = "Suite Room")]
         Suite,
+        [Display(Name = "Studio")]
         Studio
-
     }
     public class Room
     {
         [Display(Name = "Room Id")]
-        
         public int RoomId { get; set; }
         [Display(Name = "Room Number")]
         public string RoomNumber { get; set; }

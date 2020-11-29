@@ -9,13 +9,16 @@ namespace HorizonHotelWebsite.ViewsModels.UserManagerViewModels
 {
     public class AdminUserCreateViewModel
     {
+        [Display(Name = "First Name")]
         [Required]
         public string FirstName { get; set; }
+        [Display(Name = "Last Name")]
         [Required]
         public string LastName { get; set; }
         [Required]
         [EmailAddress]
         public string Email { get; set; }
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
         [Required]
         public string Role { get; set; }
@@ -23,10 +26,10 @@ namespace HorizonHotelWebsite.ViewsModels.UserManagerViewModels
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        [Display(Name = "Confrim Password")]
         [Required]
         [DataType(DataType.Password)]
         [Compare(nameof(Password))]
         public string ConfirmPassword { get; set; }
-
     }
 }
