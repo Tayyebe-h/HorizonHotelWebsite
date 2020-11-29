@@ -18,8 +18,11 @@ namespace HorizonHotelWebsite.ViewsModels.UserManagerViewModels
         public string LastName { get; set; }
         [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
-        [Display(Name = "Email")]
+        [Display(Name = "User Name")]
         public string UserName { get; set; }
+
+        public string Email { get; set; }
+
         [Display(Name = "Email Confirmed")]
         public bool EmailConfirmed { get; set; }
         public string Role { get; set; }

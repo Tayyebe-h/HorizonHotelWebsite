@@ -45,6 +45,7 @@ namespace HorizonHotelWebsite.Controllers
                     FirstName = u.FirstName,
                     LastName = u.LastName,
                     UserName = u.UserName,
+                    Email= u.Email,
                     PhoneNumber = u.PhoneNumber,
                     EmailConfirmed = u.EmailConfirmed,
                     Role = u.Role,
