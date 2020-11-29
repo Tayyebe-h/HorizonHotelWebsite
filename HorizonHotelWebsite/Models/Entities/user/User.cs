@@ -11,11 +11,10 @@ namespace HorizonHotelWebsite.Models.Entities.user
 {
     public class User:IdentityUser<int>
     {
-        [Display(Name = "First name")]
+        [Display(Name = "First Name")]
         [StringLength(50)]
         public string FirstName { get; set; }
-
-        [Display(Name = "Last name")]
+        [Display(Name = "Last Name")]
         [StringLength(50)]
         public string LastName { get; set; }
         public String Role { get; set; }

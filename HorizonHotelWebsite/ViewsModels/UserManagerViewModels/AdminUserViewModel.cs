@@ -9,23 +9,19 @@ namespace HorizonHotelWebsite.ViewsModels.UserManagerViewModels
 {
     public class AdminUserViewModel
     {
-        //public IEnumerable<User> Users { get; set; }
+        [Display(Name = "User Id")]
         [Key]
         public int UserId { get; set; }
-
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
-
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
         [Display(Name = "Email")]
         public string UserName { get; set; }
-
-            
+        [Display(Name = "Email Confirmed")]
         public bool EmailConfirmed { get; set; }
-
-         public string Role { get; set; }
-
-        
+        public string Role { get; set; }
     }
 }
