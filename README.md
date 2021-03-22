@@ -1,2 +1,3 @@
 # Horizon Hotel Website
-Asp.net core MVC project
+Asp.net core MVC project /
+Entity FrameWork
